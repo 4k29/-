@@ -1,7 +1,7 @@
 ---
 layout: null
 title: Notes
-description: Apple、Nothing、iPhone、Apple Watch、UI・UX、デザイン、写真についてのレビューと考察をまとめています。
+description: 製品やサービスの開発、デザイン、テクノロジー、UI・UXについて考察した4k29の記事一覧。
 permalink: /notes/
 ---
 <!DOCTYPE html>
@@ -19,16 +19,16 @@ permalink: /notes/
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>Apple・Nothing・UI・デザインの記事 | 4k29</title>
+  <title>製品・デザイン・テクノロジーの考察 | 4k29</title>
   <meta name="description" content="{{ page.description | escape }}" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
   <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
 
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="{{ site.title | escape }}" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Apple・Nothing・UI・デザインの記事 | 4k29" />
+  <meta property="og:title" content="製品・デザイン・テクノロジーの考察 | 4k29" />
   <meta property="og:description" content="{{ page.description | escape }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   <meta property="og:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
@@ -37,7 +37,7 @@ permalink: /notes/
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@p_horeer" />
   <meta name="twitter:creator" content="@p_horeer" />
-  <meta name="twitter:title" content="Apple・Nothing・UI・デザインの記事 | 4k29" />
+  <meta name="twitter:title" content="製品・デザイン・テクノロジーの考察 | 4k29" />
   <meta name="twitter:description" content="{{ page.description | escape }}" />
   <meta name="twitter:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
 
@@ -46,7 +46,7 @@ permalink: /notes/
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "4k29 Notes",
+    "name": "製品・デザイン・テクノロジーの考察 | 4k29",
     "description": {{ page.description | jsonify }},
     "url": {{ page.url | absolute_url | jsonify }},
     "inLanguage": "ja",
@@ -71,6 +71,26 @@ permalink: /notes/
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "4k29",
+        "item": {{ '/' | absolute_url | jsonify }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Notes",
+        "item": {{ page.url | absolute_url | jsonify }}
+      }
+    ]
+  }
+  </script>
 
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
   <link rel="apple-touch-icon" href="{{ '/favicon.png' | relative_url }}" />
@@ -85,7 +105,6 @@ permalink: /notes/
 
     <main class="note-content" id="main-content">
       <header class="archive-hero">
-        <p>Writing about technology and design</p>
         <h1>Notes</h1>
         <p class="archive-description">{{ page.description }}</p>
       </header>
