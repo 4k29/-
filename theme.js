@@ -2,8 +2,125 @@
   "use strict";
 
   var STORAGE_KEY = "4k29-theme";
+  var GA_ID = "G-KK7MDCLBGT";
+  var FAVICON_URL = "/4k29/favicon.png?v=20260910";
   var root = document.documentElement;
   var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 560px)") : null;
+
+  function ensureAnalytics() {
+    if (typeof window.gtag === "function") return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_ID);
+    document.head.appendChild(script);
+
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID, { send_page_view: true });
+  }
+
+  function trackEvent(name, params) {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", name, params || {});
+  }
+
+  function mountFavicon() {
+    var icon = document.querySelector('link[rel="icon"]');
+    if (!icon) {
+      icon = document.createElement("link");
+      icon.rel = "icon";
+      document.head.appendChild(icon);
+    }
+    icon.type = "image/png";
+    icon.href = FAVICON_URL;
+  }
+
+  function getContentContext() {
+    var path = window.location.pathname;
+    var base = "/4k29";
+
+    if (path === base + "/notes/" || path === base + "/notes") {
+      return { type: "archive", section: "notes" };
+    }
+    if (path.indexOf(base + "/notes/") === 0 && path.indexOf("/editor/") === -1) {
+      return { type: "note", section: "notes" };
+    }
+    if (path === base + "/memory/" || path === base + "/memory") {
+      return { type: "archive", section: "memory" };
+    }
+    if (path.indexOf(base + "/memory/") === 0 && path.indexOf("/editor/") === -1) {
+      return { type: "memory", section: "memory" };
+    }
+    if (path === base + "/" || path === base) {
+      return { type: "home", section: "home" };
+    }
+    if (path.indexOf(base + "/sitemap") === 0) {
+      return { type: "sitemap", section: "sitemap" };
+    }
+    return { type: "page", section: "other" };
+  }
+
+  function mountAnalytics() {
+    var context = getContentContext();
+
+    trackEvent("content_view", {
+      content_type: context.type,
+      content_section: context.section,
+      page_path: window.location.pathname,
+      page_title: document.title
+    });
+
+    document.querySelectorAll("a.row-item, .note-index-item > a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        trackEvent("content_open", {
+          link_url: link.href,
+          link_text: (link.textContent || "").trim().replace(/\s+/g, " ").slice(0, 100),
+          source_section: context.section
+        });
+      });
+    });
+
+    var shareLink = document.querySelector(".article-share a");
+    if (shareLink) {
+      shareLink.addEventListener("click", function () {
+        trackEvent("note_share", {
+          method: "x",
+          page_path: window.location.pathname,
+          page_title: document.title
+        });
+      });
+    }
+
+    if (context.type === "note") {
+      var sent50 = false;
+      var sent90 = false;
+      window.addEventListener("scroll", function () {
+        var doc = document.documentElement;
+        var maxScroll = Math.max(doc.scrollHeight - window.innerHeight, 1);
+        var progress = Math.min((window.scrollY || 0) / maxScroll, 1);
+
+        if (!sent50 && progress >= 0.5) {
+          sent50 = true;
+          trackEvent("read_depth", {
+            percent_scrolled: 50,
+            page_path: window.location.pathname,
+            page_title: document.title
+          });
+        }
+        if (!sent90 && progress >= 0.9) {
+          sent90 = true;
+          trackEvent("read_depth", {
+            percent_scrolled: 90,
+            page_path: window.location.pathname,
+            page_title: document.title
+          });
+        }
+      }, { passive: true });
+    }
+  }
 
   function systemTheme() {
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
@@ -78,6 +195,7 @@
       var next = current === "light" ? "dark" : "light";
       applyTheme(next);
       saveTheme(next);
+      trackEvent("theme_change", { theme: next });
     });
 
     if (mobileQuery) {
@@ -124,10 +242,13 @@
   }
 
   function mountUi() {
+    mountFavicon();
     mountToggle();
     mountHeaderReveal();
+    mountAnalytics();
   }
 
+  ensureAnalytics();
   applyTheme(storedTheme() || systemTheme());
 
   if (document.readyState === "loading") {
