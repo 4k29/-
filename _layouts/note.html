@@ -181,6 +181,15 @@
   </div>
 
   <script>
+    document.querySelectorAll('.article-body h2').forEach((heading) => {
+      if (heading.textContent.trim() !== '参考') return;
+      heading.classList.add('references-heading');
+      const list = heading.nextElementSibling;
+      if (list && (list.tagName === 'UL' || list.tagName === 'OL')) {
+        list.classList.add('references-list');
+      }
+    });
+
     document.querySelectorAll('.article-body a[href]').forEach((link) => {
       const href = link.getAttribute('href');
       if (!href || href.startsWith('#')) return;
