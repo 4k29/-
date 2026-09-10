@@ -108,14 +108,8 @@
     {% assign style_version = site.time | date: "%s" %}
   {% endunless %}
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v={{ style_version }}" />
-  <style>
-    .note-hero h1 {
-      text-wrap: wrap;
-      word-break: normal;
-      overflow-wrap: normal;
-      line-break: strict;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ '/enhancements.css' | relative_url }}?v={{ style_version }}" />
+  <script src="{{ '/theme.js' | relative_url }}?v={{ style_version }}" defer></script>
 </head>
 
 <body>
@@ -132,7 +126,7 @@
       </a>
     </header>
 
-    <main class="note-content">
+    <main class="note-content" id="main-content">
       <article>
         <header class="note-hero">
           <p>
@@ -171,7 +165,7 @@
               <a href="{{ note.url | relative_url }}" class="row-item compact">
                 <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%Y.%m.%d" }}</time>
                 <span class="row-title">{{ note.title | escape }}</span>
-                <span class="arrow">↗</span>
+                <span class="arrow" aria-hidden="true">↗</span>
               </a>
               {% assign related_count = related_count | plus: 1 %}
               {% endif %}
