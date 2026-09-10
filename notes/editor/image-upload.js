@@ -258,6 +258,11 @@
     uploadStatus.textContent = "動画をアップロード中…";
     try {
       var uploaded = await uploadNoteImage(file);
+      var previousPreview = window.noteVideoPreviews.get(uploaded.markdownPath);
+      if (previousPreview) URL.revokeObjectURL(previousPreview);
+      window.noteVideoPreviews.set(uploaded.markdownPath, URL.createObjectURL(file));
+      var videoDialog = document.getElementById("video-dialog");
+      if (videoDialog.open) videoDialog.close();
       var path = uploaded.markdownPath.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       var markup = '\n\n<video controls playsinline preload="metadata" src="' + path + '"></video>\n\n';
       body.setRangeText(markup, body.selectionStart, body.selectionEnd, "end");

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
   <meta name="referrer" content="no-referrer" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://api.github.com; img-src 'self' data: blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://api.github.com; img-src 'self' data: blob:; media-src 'self' https: blob:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
   <meta name="theme-color" content="#0a0a0a" />
   <title>Note Editor / 4k29</title>
   <link rel="icon" href="../../favicon.ico" />
   <link rel="apple-touch-icon" href="../../favicon.png" />
-  <link rel="stylesheet" href="../../style.css?v=20260910-media" />
+  <link rel="stylesheet" href="../../style.css?v=20260910-video2" />
   <link rel="stylesheet" href="../../editor/github.css" />
   <link rel="stylesheet" href="editor.css" />
   <link rel="stylesheet" href="draft-history.css?v=20260731-2" />
@@ -70,7 +70,7 @@
         <div class="writing-workspace">
           <section class="writing-pane" aria-label="Markdownエディター">
             <div class="pane-header"><span>Markdown</span><div class="format-toolbar" aria-label="書式">
-              <button type="button" data-action="h2" title="見出し2">H2</button><button type="button" data-action="h3" title="見出し3">H3</button><button type="button" data-action="bold" title="太字">B</button><button type="button" data-action="link" title="リンク">Link</button><button type="button" data-action="list" title="箇条書き">List</button><button type="button" data-action="quote" title="引用">Quote</button><button type="button" data-action="image" title="画像">Image</button>
+              <button type="button" data-action="h2" title="見出し2">H2</button><button type="button" data-action="h3" title="見出し3">H3</button><button type="button" data-action="bold" title="太字">B</button><button type="button" data-action="link" title="リンク">Link</button><button type="button" data-action="list" title="箇条書き">List</button><button type="button" data-action="quote" title="引用">Quote</button><button type="button" data-action="image" title="画像">Image</button><button type="button" data-action="video" title="動画">Video</button>
             </div></div>
             <label class="sr-only" for="body">記事本文</label>
             <textarea id="body" name="body" spellcheck="true" placeholder="最初の段落を書き始める。&#10;&#10;## 見出し&#10;&#10;本文…" required></textarea>
@@ -102,14 +102,16 @@
 
   <dialog id="image-dialog" class="editor-dialog"><form method="dialog"><div class="dialog-heading"><p>Insert</p><h2>画像を追加</h2></div><label class="field"><span>画像のパス</span><input id="dialog-image-path" type="text" placeholder="/images/article/photo.webp" /></label><label class="field"><span>代替テキスト</span><input id="dialog-image-alt" type="text" placeholder="写真の内容" /></label><label class="field"><span>キャプション <small>任意</small></span><input id="dialog-image-caption" type="text" placeholder="写真の説明" /></label><div class="dialog-actions"><button class="secondary-button" value="cancel">キャンセル</button><button class="primary-button" id="insert-image-button" value="default">挿入</button></div></form></dialog>
 
+  <dialog id="video-dialog" class="editor-dialog"><form method="dialog"><div class="dialog-heading"><p>Insert</p><h2>動画を追加</h2></div><label class="field"><span>動画のURLまたはパス</span><input id="dialog-video-path" type="text" placeholder="../images/notes/movie.mp4" /></label><p>MP4のURLを入力するか、ファイルをアップロードしてください。</p><button class="secondary-button" id="dialog-video-upload" type="button">MP4をアップロード</button><div class="dialog-actions"><button class="secondary-button" value="cancel">キャンセル</button><button class="primary-button" id="insert-video-button" value="default">挿入</button></div></form></dialog>
+
   <script src="../../editor/github-config.js"></script>
   <script src="../../editor/github.js"></script>
   <script src="../../editor/public-github.js"></script>
-  <script src="editor.js?v=20260910-media"></script>
+  <script src="editor.js?v=20260910-video2"></script>
   <script src="save-status.js"></script>
   <script src="draft-history.js?v=20260731-3"></script>
   <script src="draft-delete.js?v=20260731-4"></script>
-  <script src="image-upload.js?v=20260910-media"></script>
+  <script src="image-upload.js?v=20260910-video2"></script>
   <script src="direct-actions.js"></script>
   <script src="../../editor/date-default.js"></script>
 </body>

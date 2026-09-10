@@ -31,6 +31,11 @@
   var previewDateInline = document.getElementById("preview-date-inline");
   var previewBody = document.getElementById("preview-body");
   var importFile = document.getElementById("import-file");
+  var videoDialog = document.getElementById("video-dialog");
+  var videoPath = document.getElementById("dialog-video-path");
+  window.noteVideoPreviews = new Map();
+  var lastPreviewBody = null;
+  var videoSelection = null;
   var imageDialog = document.getElementById("image-dialog");
   var dialogImagePath = document.getElementById("dialog-image-path");
   var dialogImageAlt = document.getElementById("dialog-image-alt");
@@ -394,7 +399,7 @@
         if (video && video.tagName === "VIDEO" && source && isSafeUrl(source)) {
           flushParagraph();
           closeList();
-          html.push('<video controls playsinline preload="metadata" src="' + escapeHtml(previewImageUrl(source)) + '"></video>');
+          html.push('<video controls playsinline preload="metadata" src="' + escapeHtml(window.noteVideoPreviews.get(source) || previewImageUrl(source)) + '"></video>');
           return;
         }
       }
@@ -466,7 +471,10 @@
     previewTitle.textContent = data.title || "記事のタイトル";
     previewDate.textContent = date;
     previewDateInline.textContent = date;
+    if (lastPreviewBody !== data.body) {
+    lastPreviewBody = data.body;
     previewBody.innerHTML = data.body ? renderMarkdown(data.body) : '<p class="preview-placeholder">ここに記事のプレビューが表示されます。</p>';
+    }
     descriptionCount.textContent = fields.description.value.length;
     bodyCount.textContent = fields.body.value.length;
     urlPreview.textContent = BASE_URL + "/notes/" + (data.slug || "…") + ".html";
@@ -510,6 +518,12 @@
     if (action === "link") {
       var url = window.prompt("リンク先のURL", "https://");
       if (url) insertText("[", "](" + url + ")", "リンクテキスト");
+    }
+    if (action === "video") {
+      videoSelection = [fields.body.selectionStart, fields.body.selectionEnd];
+      videoPath.value = "";
+      videoDialog.showModal();
+      videoPath.focus();
     }
     if (action === "image") {
       dialogImagePath.value = "";
@@ -592,6 +606,25 @@
   document.getElementById("insert-image-button").addEventListener("click", function (event) {
     event.preventDefault();
     insertImage();
+  });
+
+  document.getElementById("insert-video-button").addEventListener("click", function (event) {
+    event.preventDefault();
+    var path = normalizeBodyImage(videoPath.value);
+    if (!isSafeUrl(path)) {
+      window.alert("動画のURL（https://…）またはパスを入力してください。");
+      return;
+    }
+    var selection = videoSelection || [fields.body.selectionStart, fields.body.selectionEnd];
+    var markup = '\n\n<video controls playsinline preload="metadata" src="' + escapeHtml(path.replace(/\s/g, "%20")) + '"></video>\n\n';
+    fields.body.setRangeText(markup, selection[0], selection[1], "end");
+    videoDialog.close();
+    fields.body.focus();
+    updateAll();
+  });
+
+  document.getElementById("dialog-video-upload").addEventListener("click", function () {
+    document.getElementById("video-upload-input").click();
   });
 
   document.getElementById("copy-button").addEventListener("click", copyMarkdown);
