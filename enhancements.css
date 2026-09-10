@@ -167,16 +167,24 @@ nav a,
   margin-top: 0;
 }
 
-/* A final list directly under a heading is used for article references. */
-.article-body h2 + ul:last-child,
-.article-body h2 + ol:last-child {
+/* References use the same compact, bullet-free format in every article. */
+.article-body h2#参考 + ul,
+.article-body h2#参考 + ol,
+.article-body h2#references + ul,
+.article-body h2#references + ol {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
-.article-body h2 + ul:last-child li + li,
-.article-body h2 + ol:last-child li + li {
-  margin-top: 5px;
+.article-body h2#参考 + ul li,
+.article-body h2#参考 + ol li,
+.article-body h2#references + ul li,
+.article-body h2#references + ol li {
+  margin: 0;
+  padding: 3px 0;
 }
 
 .article-body a {
@@ -200,37 +208,52 @@ nav a,
   font-size: 11px;
 }
 
-/* Persistent theme control shared by public pages. */
+/* Minimal half-disc theme control shared by public pages. */
 .theme-toggle {
   position: fixed;
   z-index: 1000;
   right: max(18px, env(safe-area-inset-right));
   bottom: max(18px, env(safe-area-inset-bottom));
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   padding: 0;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  background: transparent;
   color: var(--text);
-  font: inherit;
-  font-size: 15px;
-  line-height: 1;
   cursor: pointer;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 
-.theme-toggle:hover {
-  border-color: var(--muted);
+.theme-toggle-icon {
+  position: relative;
+  display: block;
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  transition: transform .22s ease;
 }
 
-@supports not (background: color-mix(in srgb, white, black)) {
-  .theme-toggle {
-    background: var(--bg);
-  }
+.theme-toggle-icon::after {
+  content: "";
+  position: absolute;
+  inset: -1px 50% -1px -1px;
+  background: currentColor;
+}
+
+.theme-toggle[data-current-theme="light"] .theme-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+  transform: rotate(22deg);
+}
+
+.theme-toggle[data-current-theme="light"]:hover .theme-toggle-icon {
+  transform: rotate(202deg);
 }
 
 @media (max-width: 560px) {
@@ -265,15 +288,17 @@ nav a,
     font-size: 16px;
   }
 
-  .article-body h2 + ul:last-child,
-  .article-body h2 + ol:last-child {
+  .article-body h2#参考 + ul,
+  .article-body h2#参考 + ol,
+  .article-body h2#references + ul,
+  .article-body h2#references + ol {
     font-size: 13.5px;
-    line-height: 1.6;
+    line-height: 1.55;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-toggle {
+  .theme-toggle-icon {
     transition: none !important;
   }
 }
