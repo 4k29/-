@@ -92,14 +92,14 @@ permalink: /
       </div>
     </section>
 
-    <section class="content-section" id="memory">
+    <section class="content-section">
       {% assign sorted_memories = site.memories | sort: "date" | reverse %}
       <div class="section-heading">
         <h2>Memory</h2>
-        <span>{% if sorted_memories.size < 10 %}0{% endif %}{{ sorted_memories.size }}</span>
+        <a class="section-link" href="{{ '/memory/' | relative_url }}">All memory ↗</a>
       </div>
       <div class="section-body row-list">
-        {% for memory in sorted_memories %}
+        {% for memory in sorted_memories limit: 5 %}
         <a href="{{ memory.url | relative_url }}" class="row-item compact">
           <time datetime="{{ memory.date | date: '%Y-%m-%d' }}">{{ memory.date_display | escape }}</time>
           <span class="row-title">{{ memory.list_title | default: memory.title | escape }}</span>
