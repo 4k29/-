@@ -38,7 +38,8 @@ html[data-theme="light"] footer,
 html[data-theme="light"] .note-footer,
 html[data-theme="light"] .memory-footer,
 html[data-theme="light"] .note-index-arrow,
-html[data-theme="light"] .compact .arrow {
+html[data-theme="light"] .compact .arrow,
+html[data-theme="light"] .photo figcaption span {
   color: var(--muted);
 }
 
@@ -166,6 +167,18 @@ nav a,
   margin-top: 0;
 }
 
+/* A final list directly under a heading is used for article references. */
+.article-body h2 + ul:last-child,
+.article-body h2 + ol:last-child {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.article-body h2 + ul:last-child li + li,
+.article-body h2 + ol:last-child li + li {
+  margin-top: 5px;
+}
+
 .article-body a {
   text-decoration-thickness: 1px;
   text-underline-offset: .2em;
@@ -250,6 +263,12 @@ nav a,
 
   .article-body h3 {
     font-size: 16px;
+  }
+
+  .article-body h2 + ul:last-child,
+  .article-body h2 + ol:last-child {
+    font-size: 13.5px;
+    line-height: 1.6;
   }
 }
 
