@@ -166,6 +166,7 @@ nav a,
 }
 
 /* References are visually consistent across every article, without bullets. */
+.article-body .references-list,
 .article-body h2#参考 + ul,
 .article-body h2#参考 + ol,
 .article-body h2#references + ul,
@@ -177,6 +178,7 @@ nav a,
   line-height: 1.55;
 }
 
+.article-body .references-list li,
 .article-body h2#参考 + ul li,
 .article-body h2#参考 + ol li,
 .article-body h2#references + ul li,
@@ -300,6 +302,7 @@ nav a,
     font-size: 16px;
   }
 
+  .article-body .references-list,
   .article-body h2#参考 + ul,
   .article-body h2#参考 + ol,
   .article-body h2#references + ul,
