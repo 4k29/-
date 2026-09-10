@@ -73,7 +73,11 @@
     "publisher": {
       "@type": "Organization",
       "name": "4k29",
-      "url": {{ '/' | absolute_url | jsonify }}
+      "url": {{ '/' | absolute_url | jsonify }},
+      "logo": {
+        "@type": "ImageObject",
+        "url": {{ '/favicon.png' | absolute_url | jsonify }}
+      }
     },
     "keywords": {{ page.tags | jsonify }}
   }
