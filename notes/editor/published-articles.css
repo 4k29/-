@@ -1,0 +1,117 @@
+.published-dialog {
+  width: min(calc(100% - 32px), 640px);
+  max-height: min(78vh, 760px);
+}
+
+.published-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  max-height: inherit;
+}
+
+.published-header {
+  padding: 24px 26px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.published-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.published-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.published-header-actions button {
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--secondary);
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.published-header-actions button:hover,
+.published-header-actions button:focus-visible {
+  border-color: #555;
+  color: var(--text);
+}
+
+.published-status {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.published-list {
+  min-height: 160px;
+  overflow-y: auto;
+  padding: 8px 26px 22px;
+}
+
+.published-item {
+  width: 100%;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 5px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.published-item strong {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 520;
+  line-height: 1.55;
+}
+
+.published-item span {
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.published-item:hover strong,
+.published-item:focus-visible strong {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+#slug[readonly] {
+  cursor: not-allowed;
+  opacity: .72;
+}
+
+#publish-button[data-mode="update"]::before {
+  content: "↻ ";
+}
+
+@media (max-width: 600px) {
+  .published-header,
+  .published-list {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .published-header-row {
+    flex-direction: column;
+  }
+
+  .published-header-actions {
+    justify-content: flex-start;
+  }
+}
