@@ -3,6 +3,5 @@
   <nav class="global-nav" aria-label="メインナビゲーション">
     <a href="{{ '/notes/' | relative_url }}"{% if page.url == '/notes/' or page.collection == 'notes' %} aria-current="page"{% endif %}>Notes</a>
     <a href="{{ '/' | relative_url }}#memory"{% if page.collection == 'memories' %} aria-current="page"{% endif %}>Memory</a>
-    <a href="{{ '/sitemap/' | relative_url }}"{% if page.url == '/sitemap/' %} aria-current="page"{% endif %}>Sitemap</a>
   </nav>
 </header>
