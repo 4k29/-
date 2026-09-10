@@ -7,11 +7,9 @@ permalink: /sitemap.xml
   <url>
     <loc>{{ '/' | absolute_url }}</loc>
   </url>
+
   <url>
     <loc>{{ '/notes/' | absolute_url }}</loc>
-  </url>
-  <url>
-    <loc>{{ '/sitemap/' | absolute_url }}</loc>
   </url>
 
   {% assign sorted_notes = site.notes | sort: "date" | reverse %}
