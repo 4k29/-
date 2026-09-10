@@ -47,6 +47,8 @@ permalink: /
   <link rel="icon" href="favicon.ico" />
   <link rel="apple-touch-icon" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="enhancements.css" />
+  <script src="theme.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -106,7 +108,7 @@ permalink: /
         <a href="{{ memory.url | relative_url }}" class="row-item compact">
           <time datetime="{{ memory.date | date: '%Y-%m-%d' }}">{{ memory.date_display | escape }}</time>
           <span class="row-title">{{ memory.list_title | default: memory.title | escape }}</span>
-          <span class="arrow">↗</span>
+          <span class="arrow" aria-hidden="true">↗</span>
         </a>
         {% endfor %}
       </div>
@@ -124,7 +126,7 @@ permalink: /
         <a href="{{ note.url | relative_url }}" class="row-item compact">
           <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%Y.%m.%d" }}</time>
           <span class="row-title">{{ note.title | escape }}</span>
-          <span class="arrow">↗</span>
+          <span class="arrow" aria-hidden="true">↗</span>
         </a>
         {% endfor %}
       </div>
