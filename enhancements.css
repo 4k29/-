@@ -77,9 +77,9 @@ select:focus-visible,
 
 /* One header component for every public page. */
 .global-header {
-  width: min(calc(100% - 48px), 800px);
+  width: min(calc(100% - 40px), var(--content-width));
   height: 64px;
-  margin-inline: auto;
+  margin: 18px auto 0;
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
@@ -136,18 +136,21 @@ nav a,
   font-size: 11px;
 }
 
-/* Shared Note layout: every article uses the same reading measure and typography. */
+/* One content width across Home, Notes, articles, Sitemap and Memory. */
 .note-nav,
 .note-content,
-.note-footer {
-  width: min(calc(100% - 48px), 800px);
+.note-footer,
+.memory-content,
+.memory-footer {
+  width: min(calc(100% - 40px), var(--content-width));
+  margin-inline: auto;
 }
 
 .note-hero h1,
 .article-body,
 .article-share,
 .related-notes {
-  max-width: 720px;
+  max-width: 100%;
 }
 
 .note-hero h1 {
@@ -335,7 +338,9 @@ nav a,
   .global-header,
   .note-nav,
   .note-content,
-  .note-footer {
+  .note-footer,
+  .memory-content,
+  .memory-footer {
     width: calc(100% - 32px);
   }
 
