@@ -1,0 +1,260 @@
+/* Shared readability, accessibility and theme refinements */
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  font-weight: 350;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f7f7f5;
+  --text: #171719;
+  --secondary: #3f3f45;
+  --muted: #66666c;
+  --line: #d8d8d3;
+}
+
+html[data-theme="light"] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+html[data-theme="light"] dd,
+html[data-theme="light"] .compact .row-title,
+html[data-theme="light"] .article-share a,
+html[data-theme="light"] .article-body > p,
+html[data-theme="light"] .article-body > ul,
+html[data-theme="light"] .article-body > ol,
+html[data-theme="light"] .article-body blockquote,
+html[data-theme="light"] .note-index-item p,
+html[data-theme="light"] .photo figcaption {
+  color: var(--secondary);
+}
+
+html[data-theme="light"] footer,
+html[data-theme="light"] .note-footer,
+html[data-theme="light"] .memory-footer,
+html[data-theme="light"] .note-index-arrow,
+html[data-theme="light"] .compact .arrow {
+  color: var(--muted);
+}
+
+html[data-theme="light"] .article-body b,
+html[data-theme="light"] .article-body strong {
+  color: var(--text);
+}
+
+html[data-theme="light"] .article-body pre,
+html[data-theme="light"] .article-body :not(pre) > code {
+  background: #efefec;
+  color: #242427;
+}
+
+html[data-theme="light"] .article-body > p > img,
+html[data-theme="light"] .article-body video,
+html[data-theme="light"] .article-image img,
+html[data-theme="light"] .photo img {
+  background: #ecece8;
+}
+
+html[data-theme="light"] .note-index-meta span::before {
+  color: #aaa9a4;
+}
+
+/* Keep interactive controls clearly keyboard-visible. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Slightly improve small navigation/footer text contrast and legibility. */
+.note-nav,
+.memory-nav {
+  font-size: 11px;
+}
+
+footer,
+.note-footer,
+.memory-footer {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+nav a,
+.contact-list a,
+.section-heading .section-link,
+.related-notes-heading a {
+  font-size: 11px;
+}
+
+/* One consistent reading measure for every Note article. */
+.note-nav,
+.note-content,
+.note-footer {
+  width: min(calc(100% - 48px), 800px);
+}
+
+.note-hero h1,
+.article-body,
+.article-share,
+.related-notes {
+  max-width: 720px;
+}
+
+.note-hero h1 {
+  font-size: clamp(34px, 5.4vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.045em;
+  text-wrap: wrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  line-break: strict;
+}
+
+.article-body {
+  padding-top: 58px;
+}
+
+.article-body > p,
+.article-body > ul,
+.article-body > ol {
+  color: #dedee0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+}
+
+.article-body > p {
+  margin-bottom: 1.45em;
+}
+
+.article-body h2 {
+  margin: 58px 0 18px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.article-body h3 {
+  margin: 42px 0 15px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.article-body > ul,
+.article-body > ol {
+  margin-bottom: 1.6em;
+  padding-left: 1.35em;
+}
+
+.article-body li + li {
+  margin-top: 4px;
+}
+
+.article-body h2 + ul,
+.article-body h2 + ol {
+  margin-top: 0;
+}
+
+.article-body a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+
+.article-body a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.article-body > p:has(> img) + p:has(> em:only-child),
+.article-body > p:has(> img) > em:last-child,
+.article-image figcaption {
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.article-share,
+.related-notes {
+  font-size: 11px;
+}
+
+/* Persistent theme control shared by public pages. */
+.theme-toggle {
+  position: fixed;
+  z-index: 1000;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.theme-toggle:hover {
+  border-color: var(--muted);
+}
+
+@supports not (background: color-mix(in srgb, white, black)) {
+  .theme-toggle {
+    background: var(--bg);
+  }
+}
+
+@media (max-width: 560px) {
+  .note-nav,
+  .note-content,
+  .note-footer {
+    width: calc(100% - 32px);
+  }
+
+  .note-hero h1 {
+    font-size: 32px;
+    line-height: 1.22;
+  }
+
+  .article-body {
+    padding-top: 44px;
+  }
+
+  .article-body > p,
+  .article-body > ul,
+  .article-body > ol {
+    font-size: 15.5px;
+    line-height: 1.85;
+  }
+
+  .article-body h2 {
+    margin-top: 50px;
+    font-size: 18px;
+  }
+
+  .article-body h3 {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    transition: none !important;
+  }
+}
