@@ -61,5 +61,5 @@ Siri AIが、その人のことを踏まえて支援する存在へと進化す�
 
 - [Apple Watch Series 12](https://www.apple.com/jp/apple-watch-series-12/) - Apple公式ページ
 - [Apple Watch Ultra 4](https://www.apple.com/jp/apple-watch-ultra-4/) - Apple公式ページ
-- [Apple unveils Apple Watch Ultra 4](https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/) - Apple Newsroom
-- [About Audio Intelligence features on Apple Watch Series 12 and Apple Watch Ultra 4](https://support.apple.com/en-us/148354) - Apple Support
+- [新しいヘルスセンシングシステムを搭載したApple Watch Series 12が登場](https://images.apple.com/jp/newsroom/2026/09/introducing-apple-watch-series-12-with-the-all-new-health-sensing-system/) - Apple Newsroom
+- [Apple、Apple Watch Ultra 4を発表](https://images.apple.com/jp/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/) - Apple Newsroom
