@@ -1,11 +1,8 @@
 ---
 title: "Nothing Headphone (1) 4ヶ月使用レビュー"
-title_lines:
-  - "Nothing Headphone (1)"
-  - "4ヶ月使用レビュー"
 description: "Nothing Headphone (1)を4ヶ月間ほぼ毎日使って分かった、音、操作、ノイズキャンセリング、バッテリー、装着感、傷についてのレビュー。"
 date: "2026-07-22 00:00:00 +0900"
-last_modified_at: "2026-07-22 00:00:00 +0900"
+last_modified_at: "2026-09-10 00:00:00 +0900"
 permalink: "/notes/Nothing-Headphone-1.html"
 image: "/images/ogp/NothingHeadphone(1).png"
 image_alt: "Nothing Headphone (1)"
@@ -102,3 +99,9 @@ Headphone (1)は独特な形状をしているため、首にかけると左右�
 メガネをかけたときの痛さや夏の蒸れ、傷の付きやすさは気になる。ただ、それを差し引いても満足感はかなり高い。何より、朝起きてHeadphone (1)を見ると「今日も頑張ろう」と思える。4ヶ月経っても、この感覚は変わっていない。  
 僕はものすごくおすすめできる。音や性能だけでなく、持っていること自体を楽しめるヘッドホンを探しているなら、一度実機を見てほしい。  
 購入を検討していて、この記事にないことで知りたいことがあれば、XのDMで聞いてください。
+
+## 参考
+
+- [Headphone (1)](https://jp.nothing.tech/products/headphone-1) - Nothing公式
+- [Nothing Headphone (1) 製品サポート](https://support.nothing.tech/hc/ja/categories/36671296775057-Nothing-Headphone-1) - Nothing Support
+- [Nothing Headphone (1) - Sound by KEF](https://jp.kef.com/products/nothing-headphone-1) - KEF日本
