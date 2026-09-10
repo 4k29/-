@@ -8,20 +8,18 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KK7MDCLBGT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>{{ page.title | escape }} / {{ site.title | escape }}</title>
+  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
   <meta name="description" content="{{ page.description | escape }}" />
   <meta name="author" content="{{ page.author | default: 'うまいしか' | escape }}" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
 
-  <!-- Open Graph -->
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="{{ site.title | escape }}" />
   <meta property="og:type" content="article" />
@@ -32,12 +30,11 @@
   <meta property="og:image:alt" content="{{ page.image_alt | default: page.title | escape }}" />
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
   <meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}" />
-  <meta property="article:author" content="https://x.com/p_horeer" />
+  <meta property="article:author" content="{{ '/' | absolute_url }}" />
   {% for tag in page.tags %}
   <meta property="article:tag" content="{{ tag | escape }}" />
   {% endfor %}
 
-  <!-- X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@p_horeer" />
   <meta name="twitter:creator" content="@p_horeer" />
@@ -52,6 +49,7 @@
     "@type": "BlogPosting",
     "headline": {{ page.title | jsonify }},
     "description": {{ page.description | jsonify }},
+    "url": {{ page.url | absolute_url | jsonify }},
     "image": {{ page.image | absolute_url | jsonify }},
     "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
     "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
@@ -60,10 +58,16 @@
       "@type": "WebPage",
       "@id": {{ page.url | absolute_url | jsonify }}
     },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": {{ site.title | jsonify }},
+      "url": {{ '/' | absolute_url | jsonify }}
+    },
     "author": {
       "@type": "Person",
       "name": "うまいしか",
-      "url": "https://x.com/p_horeer"
+      "url": {{ '/' | absolute_url | jsonify }},
+      "sameAs": "https://x.com/p_horeer"
     },
     "publisher": {
       "@type": "Person",
@@ -177,7 +181,7 @@
 
     <footer class="note-footer">
       <p>© {{ site.time | date: "%Y" }} 4k29</p>
-      <a href="#top">Back to top ↑</a>
+      <div class="footer-links"><a href="{{ '/sitemap/' | relative_url }}">Sitemap</a><a href="#top">Back to top ↑</a></div>
     </footer>
   </div>
 
@@ -185,7 +189,6 @@
     document.querySelectorAll('.article-body a[href]').forEach((link) => {
       const href = link.getAttribute('href');
       if (!href || href.startsWith('#')) return;
-
       const url = new URL(link.href, window.location.href);
       if (url.origin !== window.location.origin) {
         link.target = '_blank';
