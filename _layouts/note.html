@@ -66,12 +66,11 @@
     "author": {
       "@type": "Person",
       "name": "うまいしか",
-      "url": {{ '/' | absolute_url | jsonify }},
-      "sameAs": "https://x.com/p_horeer"
+      "url": "https://x.com/p_horeer"
     },
     "publisher": {
-      "@type": "Person",
-      "name": "うまいしか",
+      "@type": "Organization",
+      "name": "4k29",
       "url": {{ '/' | absolute_url | jsonify }}
     },
     "keywords": {{ page.tags | jsonify }}
@@ -86,7 +85,7 @@
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Home",
+        "name": "4k29",
         "item": {{ '/' | absolute_url | jsonify }}
       },
       {
@@ -120,14 +119,11 @@
   <div class="note-page" id="top">
     <header class="note-nav">
       <div>
-        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/' | relative_url }}">4k29</a>
         <span>/</span>
         <a href="{{ '/notes/' | relative_url }}">Notes</a>
       </div>
-
-      <a href="https://x.com/p_horeer" target="_blank" rel="noopener noreferrer">
-        @p_horeer ↗
-      </a>
+      <a href="{{ '/sitemap/' | relative_url }}">Index</a>
     </header>
 
     <main class="note-content" id="main-content">
@@ -148,7 +144,6 @@
       <div class="article-share">
         <p>Share this note</p>
         {% capture share_text %}{{ page.title }}
-@p_horeer
 {{ page.url | absolute_url }}{% endcapture %}
         <a href="https://twitter.com/intent/tweet?text={{ share_text | strip | url_encode }}" target="_blank" rel="noopener noreferrer">
           Share on X ↗
