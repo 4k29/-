@@ -68,6 +68,8 @@
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
   <link rel="apple-touch-icon" href="{{ '/favicon.png' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/enhancements.css' | relative_url }}" />
+  <script src="{{ '/theme.js' | relative_url }}" defer></script>
   <style>
     .memory-nav,
     .memory-content,
@@ -125,7 +127,7 @@
       </div>
     </header>
 
-    <main class="memory-content">
+    <main class="memory-content" id="main-content">
       <section class="memory-intro">
         <h1>{{ page.title | escape }}</h1>
       </section>
