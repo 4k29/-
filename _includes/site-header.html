@@ -18,6 +18,9 @@
   }
 
   .global-header {
+    position: sticky !important;
+    top: 0;
+    z-index: 900;
     height: 64px !important;
     margin-top: 18px !important;
     border-bottom: 1px solid var(--line);
@@ -27,6 +30,18 @@
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif !important;
     font-style: normal !important;
     letter-spacing: -0.01em !important;
+    transition: transform .26s cubic-bezier(.22, 1, .36, 1), background-color .18s ease, backdrop-filter .18s ease;
+    will-change: transform;
+  }
+
+  .global-header.is-scrolled {
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  .global-header.is-hidden {
+    transform: translateY(calc(-100% - 20px));
   }
 
   .global-header .global-brand {
@@ -68,6 +83,12 @@
     max-width: 100% !important;
   }
 
+  @supports not (background: color-mix(in srgb, white, black)) {
+    .global-header.is-scrolled {
+      background: var(--bg);
+    }
+  }
+
   @media (max-width: 560px) {
     .global-header,
     body > main,
@@ -80,13 +101,38 @@
     }
 
     .global-header .global-nav {
-      gap: 16px !important;
+      gap: 14px !important;
     }
 
     .global-header .global-nav a,
     .global-header .global-nav a[aria-current="page"] {
       font-size: 10.5px !important;
       font-weight: 400 !important;
+    }
+
+    .global-header .theme-toggle {
+      position: static !important;
+      z-index: auto !important;
+      width: 26px !important;
+      height: 26px !important;
+      margin: 0 -5px 0 -1px !important;
+      flex: 0 0 26px;
+      opacity: .82;
+    }
+
+    .global-header .theme-toggle:hover {
+      background: transparent;
+    }
+
+    .global-header .theme-toggle-icon {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .global-header {
+      transition: none !important;
     }
   }
 </style>
