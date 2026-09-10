@@ -1,0 +1,80 @@
+---
+layout: null
+title: Sitemap
+description: 4k29の記事と写真ページの一覧。
+permalink: /sitemap/
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ja' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitemap / {{ site.title | escape }}</title>
+  <meta name="description" content="{{ page.description | escape }}" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
+  <link rel="apple-touch-icon" href="{{ '/favicon.png' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/enhancements.css' | relative_url }}" />
+  <script src="{{ '/theme.js' | relative_url }}" defer></script>
+</head>
+<body>
+  <div class="notes-index" id="top">
+    <header class="note-nav">
+      <div>
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <span>/</span>
+        <span>Sitemap</span>
+      </div>
+    </header>
+
+    <main class="note-content" id="main-content">
+      <header class="archive-hero">
+        <p>All public pages</p>
+        <h1>Sitemap</h1>
+        <p class="archive-description">記事とMemoryをまとめて辿れる一覧です。</p>
+      </header>
+
+      {% assign sorted_notes = site.notes | sort: "date" | reverse %}
+      <section class="sitemap-section" aria-labelledby="sitemap-notes">
+        <div class="related-notes-heading">
+          <h2 id="sitemap-notes">Notes</h2>
+          <span>{{ sorted_notes | size }}</span>
+        </div>
+        <div class="row-list">
+          {% for note in sorted_notes %}
+          <a href="{{ note.url | relative_url }}" class="row-item compact">
+            <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%Y.%m.%d" }}</time>
+            <span class="row-title">{{ note.title | escape }}</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+
+      {% assign sorted_memories = site.memories | sort: "date" | reverse %}
+      <section class="sitemap-section" aria-labelledby="sitemap-memory">
+        <div class="related-notes-heading">
+          <h2 id="sitemap-memory">Memory</h2>
+          <span>{{ sorted_memories | size }}</span>
+        </div>
+        <div class="row-list">
+          {% for memory in sorted_memories %}
+          <a href="{{ memory.url | relative_url }}" class="row-item compact">
+            <time datetime="{{ memory.date | date: '%Y-%m-%d' }}">{{ memory.date_display | default: memory.date | date: "%Y.%m.%d" }}</time>
+            <span class="row-title">{{ memory.list_title | default: memory.title | escape }}</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+
+    <footer class="note-footer">
+      <p>© {{ site.time | date: "%Y" }} 4k29</p>
+      <div class="footer-links"><a href="{{ '/notes/' | relative_url }}">Notes</a><a href="#top">Back to top ↑</a></div>
+    </footer>
+  </div>
+</body>
+</html>
