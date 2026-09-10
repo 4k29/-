@@ -1,3 +1,64 @@
+<style>
+  .global-header {
+    width: min(calc(100% - 40px), 680px);
+    height: 64px;
+    margin: 18px auto 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    font-style: normal;
+    letter-spacing: -0.01em;
+  }
+
+  .global-header .global-brand {
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 560;
+    line-height: 1;
+    letter-spacing: .04em;
+  }
+
+  .global-header .global-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .global-header .global-nav a {
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .global-header .global-nav a:hover,
+  .global-header .global-nav a[aria-current="page"] {
+    color: var(--text);
+  }
+
+  .global-header .global-nav a[aria-current="page"] {
+    font-weight: 520;
+  }
+
+  @media (max-width: 560px) {
+    .global-header {
+      width: calc(100% - 32px);
+    }
+
+    .global-header .global-nav {
+      gap: 16px;
+    }
+
+    .global-header .global-nav a {
+      font-size: 10.5px;
+    }
+  }
+</style>
 <header class="global-header">
   <a class="global-brand" href="{{ '/' | relative_url }}">4k29</a>
   <nav class="global-nav" aria-label="メインナビゲーション">
