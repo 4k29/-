@@ -11,13 +11,10 @@ tags: ["iPhone","Duo","iOS"]
 
 iPhone Duoに搭載されるOSは、iOSだ。しかし、発表された機能やインターフェースを見ると、従来のiPhoneと同じ名前で扱うことに違和感がある。iOSをベースとしながらも、iPadOSの良さを取り入れ、さらに折りたたみ端末ならではの使い方を実現しているからだ。今回はそんなお話。
 
-
-
 ![iPhone Duo](../images/notes/iphone-duo-os-1.jpg)
 *iPhone Duo*
 
 iPhone Duoでは、2つのアプリを並べるSplit Viewや、同じアプリのウィンドウを2つ開く機能が利用できる。Dockや操作部分は側面に配置され、折りたたみ状態に応じて表示も変化する。画面の大型化に合わせて、操作の仕組みまで設計し直されている。
-
 
 ![iPhone Duoでのマルチタスク](../images/notes/iphone-duo-os-2.jpg)
 *iPhone Duoでのマルチタスク*
@@ -48,10 +45,8 @@ Appleは2019年、iPad向けのOSに「iPadOS」という名前を与えた。�
 
 実機での使いやすさや、対応アプリでどこまで一貫した体験が得られるかは、まだ判断できない。それでも、iOSを土台にしているという説明だけでは、Duoの特徴を十分に伝えきれないと感じる。iOSとiPadOSの良さを取り込み、折りたたみ固有の使い方まで実現するOSとして、独自の名前を与える意義はあるのではないだろうか。
 
-参考
+## 参考
 
-[iPhone Duo]([https://www.apple.com/jp/newsroom/2026/09/apple-unveils-iphone-duo/](https://www.apple.com/jp/iphone-duo/)) - Apple公式ページ
-
-[Apple unveils iPhone Duo](https://www.apple.com/jp/newsroom/2026/09/apple-unveils-iphone-duo/) - Apple Newsroom
-
-[The new iPadOS powers unique experiences designed for iPad](https://www.apple.com/jp/newsroom/2019/06/the-new-ipados-powers-unique-experiences-designed-for-ipad/) - Apple Newsroom
+- [iPhone Duo](https://www.apple.com/jp/iphone-duo/) - Apple公式ページ
+- [Apple unveils iPhone Duo](https://www.apple.com/jp/newsroom/2026/09/apple-unveils-iphone-duo/) - Apple Newsroom
+- [The new iPadOS powers unique experiences designed for iPad](https://www.apple.com/jp/newsroom/2019/06/the-new-ipados-powers-unique-experiences-designed-for-ipad/) - Apple Newsroom
