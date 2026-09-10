@@ -1,6 +1,47 @@
 (function () {
   "use strict";
 
+  function mountUi() {
+    var actions = document.querySelector(".editor-section-actions");
+    if (!actions) return false;
+
+    if (!document.getElementById("published-button")) {
+      var button = document.createElement("button");
+      button.className = "text-button";
+      button.id = "published-button";
+      button.type = "button";
+      button.textContent = "公開済み記事";
+      actions.insertBefore(button, actions.firstChild);
+    }
+
+    if (!document.getElementById("published-dialog")) {
+      var dialog = document.createElement("dialog");
+      dialog.id = "published-dialog";
+      dialog.className = "editor-dialog published-dialog";
+      dialog.setAttribute("aria-labelledby", "published-title");
+      dialog.innerHTML = [
+        '<section class="published-shell">',
+        '<header class="published-header">',
+        '<div class="published-header-row">',
+        '<div class="dialog-heading"><p>Published notes</p><h2 id="published-title">公開済み記事</h2></div>',
+        '<div class="published-header-actions">',
+        '<button id="published-new" type="button">新規記事</button>',
+        '<button id="published-refresh" type="button">更新</button>',
+        '<button id="published-close" type="button">閉じる</button>',
+        '</div></div>',
+        '<p class="published-status" id="published-status" role="status" aria-live="polite">公開済み記事をGitHubから読み込みます。</p>',
+        '</header>',
+        '<div class="published-list" id="published-list"></div>',
+        '</section>'
+      ].join("");
+      document.body.appendChild(dialog);
+    }
+
+    return true;
+  }
+
+  if (!mountUi()) return;
+
   var button = document.getElementById("published-button");
   var dialog = document.getElementById("published-dialog");
   var closeButton = document.getElementById("published-close");
@@ -10,8 +51,6 @@
   var list = document.getElementById("published-list");
   var publishButton = document.getElementById("publish-button");
   var saveStatus = document.getElementById("save-status");
-
-  if (!button || !dialog || !list) return;
 
   var fields = {
     title: document.getElementById("title"),
