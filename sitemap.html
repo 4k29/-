@@ -14,7 +14,7 @@ permalink: /sitemap/
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
   <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
-  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
+  <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}" />
   <link rel="apple-touch-icon" href="{{ '/favicon.png' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/enhancements.css' | relative_url }}" />
@@ -36,33 +36,20 @@ permalink: /sitemap/
           <span>3</span>
         </div>
         <div class="row-list">
-          <a href="{{ '/' | relative_url }}" class="row-item compact">
-            <span class="row-title">Home</span>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-          <a href="{{ '/notes/' | relative_url }}" class="row-item compact">
-            <span class="row-title">Notes</span>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-          <a href="{{ '/memory/' | relative_url }}" class="row-item compact">
-            <span class="row-title">Memory</span>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
+          <a href="{{ '/' | relative_url }}" class="row-item compact"><span class="row-title">Home</span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="{{ '/notes/' | relative_url }}" class="row-item compact"><span class="row-title">Notes</span><span class="arrow" aria-hidden="true">↗</span></a>
+          <a href="{{ '/memory/' | relative_url }}" class="row-item compact"><span class="row-title">Memory</span><span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </section>
 
       {% assign sorted_notes = site.notes | sort: "date" | reverse %}
       <section class="sitemap-section" aria-labelledby="sitemap-notes">
-        <div class="related-notes-heading">
-          <h2 id="sitemap-notes">Notes</h2>
-          <span>{{ sorted_notes | size }}</span>
-        </div>
+        <div class="related-notes-heading"><h2 id="sitemap-notes">Notes</h2><span>{{ sorted_notes | size }}</span></div>
         <div class="row-list">
           {% for note in sorted_notes %}
           <a href="{{ note.url | relative_url }}" class="row-item compact">
             <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%Y.%m.%d" }}</time>
-            <span class="row-title">{{ note.title | escape }}</span>
-            <span class="arrow" aria-hidden="true">↗</span>
+            <span class="row-title">{{ note.title | escape }}</span><span class="arrow" aria-hidden="true">↗</span>
           </a>
           {% endfor %}
         </div>
@@ -70,16 +57,12 @@ permalink: /sitemap/
 
       {% assign sorted_memories = site.memories | sort: "date" | reverse %}
       <section class="sitemap-section" aria-labelledby="sitemap-memory">
-        <div class="related-notes-heading">
-          <h2 id="sitemap-memory">Memory</h2>
-          <span>{{ sorted_memories | size }}</span>
-        </div>
+        <div class="related-notes-heading"><h2 id="sitemap-memory">Memory</h2><span>{{ sorted_memories | size }}</span></div>
         <div class="row-list">
           {% for memory in sorted_memories %}
           <a href="{{ memory.url | relative_url }}" class="row-item compact">
             <time datetime="{{ memory.date | date: '%Y-%m-%d' }}">{{ memory.date_display | default: memory.date | date: "%Y.%m.%d" }}</time>
-            <span class="row-title">{{ memory.list_title | default: memory.title | escape }}</span>
-            <span class="arrow" aria-hidden="true">↗</span>
+            <span class="row-title">{{ memory.list_title | default: memory.title | escape }}</span><span class="arrow" aria-hidden="true">↗</span>
           </a>
           {% endfor %}
         </div>
