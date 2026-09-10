@@ -94,6 +94,7 @@ nav a,
   font-size: 11px;
 }
 
+/* Shared Note layout: every article uses the same reading measure and typography. */
 .note-nav,
 .note-content,
 .note-footer {
@@ -164,6 +165,7 @@ nav a,
   margin-top: 0;
 }
 
+/* References are visually consistent across every article, without bullets. */
 .article-body h2#参考 + ul,
 .article-body h2#参考 + ol,
 .article-body h2#references + ul,
@@ -229,46 +231,41 @@ nav a,
   z-index: 1000;
   right: max(18px, env(safe-area-inset-right));
   bottom: max(18px, env(safe-area-inset-bottom));
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   padding: 0;
   border: 0;
   border-radius: 999px;
   display: grid;
   place-items: center;
   background: transparent;
-  color: var(--text);
+  color: var(--muted);
   cursor: pointer;
+  opacity: .82;
+  transition: color .18s ease, opacity .18s ease, background-color .18s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+  opacity: 1;
+  background: color-mix(in srgb, var(--text) 6%, transparent);
 }
 
 .theme-toggle-icon {
-  position: relative;
   display: block;
-  width: 17px;
-  height: 17px;
-  overflow: hidden;
-  border: 1.5px solid currentColor;
-  border-radius: 50%;
-  transition: transform .22s ease;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.theme-toggle-icon::after {
-  content: "";
-  position: absolute;
-  inset: -1px 50% -1px -1px;
-  background: currentColor;
-}
-
-.theme-toggle[data-current-theme="light"] .theme-toggle-icon {
-  transform: rotate(180deg);
-}
-
-.theme-toggle:hover .theme-toggle-icon {
-  transform: rotate(22deg);
-}
-
-.theme-toggle[data-current-theme="light"]:hover .theme-toggle-icon {
-  transform: rotate(202deg);
+@supports not (background: color-mix(in srgb, white, black)) {
+  .theme-toggle:hover {
+    background: transparent;
+  }
 }
 
 @media (max-width: 560px) {
@@ -317,7 +314,7 @@ nav a,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-toggle-icon {
+  .theme-toggle {
     transition: none !important;
   }
 }
