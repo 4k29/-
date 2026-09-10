@@ -1,11 +1,8 @@
 ---
 title: "iPhone eシリーズの意義を考える"
-title_lines:
-  - "iPhone eシリーズの"
-  - "意義を考える"
 description: "「廉価版」だったSEと、「ファミリーの一員」であるeシリーズ。設計思想の転換から、Appleがeに込めた意図を読み解く。"
 date: "2026-03-15 00:00:00 +0900"
-last_modified_at: "2026-03-15 00:00:00 +0900"
+last_modified_at: "2026-09-10 00:00:00 +0900"
 permalink: "/notes/iPhone-e.html"
 image: "/images/ogp/iPhone-e.png"
 image_alt: "iPhone eシリーズの意義を考える"
@@ -95,3 +92,10 @@ eシリーズはまだ2世代目だ。Dynamic Islandの非搭載など、無印�
 17e発表時には16eほど批判の声が目立たなかったのは、eシリーズの魅力・役割が浸透した結果かもしれない。  
 eシリーズがiPhoneのエントリーラインとして定着するかどうか。  
 それはAppleがこのラインをどれだけ本気で育てていくかにかかっている。
+
+## 参考
+
+- [iPhone 17e](https://www.apple.com/jp/iphone-17e/) - Apple公式ページ
+- [Apple、iPhone 17eを発表](https://www.apple.com/jp/newsroom/2026/03/apple-introduces-iphone-17e/) - Apple Newsroom
+- [Apple、iPhone 16eを発表](https://www.apple.com/jp/newsroom/2025/02/apple-debuts-iphone-16e-a-powerful-new-member-of-the-iphone-16-family/) - Apple Newsroom
+- [Apple IntelligenceとSiri](https://www.apple.com/jp/apple-intelligence/) - Apple公式ページ
