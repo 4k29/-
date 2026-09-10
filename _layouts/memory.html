@@ -8,33 +8,30 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KK7MDCLBGT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>{{ page.title | escape }} / {{ site.title | escape }}</title>
+  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
   <meta name="description" content="{{ page.description | escape }}" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
 
-  <!-- Open Graph -->
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="{{ site.title | escape }}" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ page.title | escape }} / {{ site.title | escape }}" />
+  <meta property="og:title" content="{{ page.title | escape }} | {{ site.title | escape }}" />
   <meta property="og:description" content="{{ page.description | escape }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   <meta property="og:image" content="{{ page.image | absolute_url }}" />
   <meta property="og:image:alt" content="{{ page.image_alt | default: page.title | escape }}" />
 
-  <!-- X Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@p_horeer" />
   <meta name="twitter:creator" content="@p_horeer" />
-  <meta name="twitter:title" content="{{ page.title | escape }} / {{ site.title | escape }}" />
+  <meta name="twitter:title" content="{{ page.title | escape }} | {{ site.title | escape }}" />
   <meta name="twitter:description" content="{{ page.description | escape }}" />
   <meta name="twitter:image" content="{{ page.image | absolute_url }}" />
   <meta name="twitter:image:alt" content="{{ page.image_alt | default: page.title | escape }}" />
@@ -48,10 +45,15 @@
     "url": {{ page.url | absolute_url | jsonify }},
     "dateCreated": {{ page.date | date_to_xmlschema | jsonify }},
     "inLanguage": "ja",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "4k29",
+      "url": {{ '/' | absolute_url | jsonify }}
+    },
     "creator": {
       "@type": "Person",
       "name": "うまいしか",
-      "url": "https://x.com/p_horeer"
+      "url": {{ '/' | absolute_url | jsonify }}
     },
     "associatedMedia": [
       {% for photo in page.photos %}
@@ -75,12 +77,6 @@
     .memory-content,
     .memory-footer {
       width: min(calc(100% - 40px), var(--content-width));
-    }
-
-    .memory-footer-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
     }
 
     @media (max-width: 560px) {
@@ -150,6 +146,7 @@
     <footer class="memory-footer">
       <p>© {{ site.time | date: "%Y" }} 4k29</p>
       <div class="memory-footer-links">
+        <a href="{{ '/sitemap/' | relative_url }}">Sitemap</a>
         <a href="#top">Back to top ↑</a>
         <a href="{{ next_url | relative_url }}">Next</a>
       </div>
