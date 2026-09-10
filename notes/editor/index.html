@@ -10,7 +10,7 @@
   <title>Note Editor / 4k29</title>
   <link rel="icon" href="../../favicon.ico" />
   <link rel="apple-touch-icon" href="../../favicon.png" />
-  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../style.css?v=20260910-media" />
   <link rel="stylesheet" href="../../editor/github.css" />
   <link rel="stylesheet" href="editor.css" />
   <link rel="stylesheet" href="draft-history.css?v=20260731-2" />
@@ -61,6 +61,8 @@
             <span id="image-upload-status" role="status" aria-live="polite"></span>
             <button class="text-button" id="image-upload-button" type="button">写真をアップロード</button>
             <input id="image-upload-input" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" hidden />
+            <button class="text-button" id="video-upload-button" type="button">MP4をアップロード</button>
+            <input id="video-upload-input" type="file" accept="video/mp4,.mp4" hidden />
             <p><output id="body-count">0</output>文字</p>
           </div>
         </div>
@@ -103,11 +105,11 @@
   <script src="../../editor/github-config.js"></script>
   <script src="../../editor/github.js"></script>
   <script src="../../editor/public-github.js"></script>
-  <script src="editor.js"></script>
+  <script src="editor.js?v=20260910-media"></script>
   <script src="save-status.js"></script>
   <script src="draft-history.js?v=20260731-3"></script>
   <script src="draft-delete.js?v=20260731-4"></script>
-  <script src="image-upload.js?v=20260731-2"></script>
+  <script src="image-upload.js?v=20260910-media"></script>
   <script src="direct-actions.js"></script>
   <script src="../../editor/date-default.js"></script>
 </body>

@@ -21,6 +21,8 @@
   var body = document.getElementById("body");
   var slugInput = document.getElementById("slug");
   var titleInput = document.getElementById("title");
+  var videoUploadButton = document.getElementById("video-upload-button");
+  var videoUploadInput = document.getElementById("video-upload-input");
   var ogpPathInput = document.getElementById("image");
   var ogpAltInput = document.getElementById("image-alt");
 
@@ -66,6 +68,7 @@
   }
 
   function fileExtension(file) {
+    if (file.type === "video/mp4" || /\.mp4$/i.test(file.name)) return ".mp4";
     var dot = file.name.lastIndexOf(".");
     if (dot >= 0) return file.name.slice(dot).toLowerCase();
 
@@ -237,6 +240,38 @@
       window.alert(error.message || "画像をアップロードできませんでした。通信状況を確認してください。");
     }
   }
+
+  videoUploadButton.addEventListener("click", function () {
+    videoUploadInput.click();
+  });
+
+  videoUploadInput.addEventListener("change", async function () {
+    var file = videoUploadInput.files && videoUploadInput.files[0];
+    if (!file) return;
+    if (!(file.type === "video/mp4" || (!file.type && /\.mp4$/i.test(file.name))) || !file.size || file.size > 20 * 1024 * 1024) {
+      window.alert("20MB以下のMP4動画を選んでください。");
+      videoUploadInput.value = "";
+      return;
+    }
+    videoUploadButton.disabled = true;
+    uploadButton.disabled = true;
+    uploadStatus.textContent = "動画をアップロード中…";
+    try {
+      var uploaded = await uploadNoteImage(file);
+      var path = uploaded.markdownPath.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      var markup = '\n\n<video controls playsinline preload="metadata" src="' + path + '"></video>\n\n';
+      body.setRangeText(markup, body.selectionStart, body.selectionEnd, "end");
+      body.dispatchEvent(new Event("input", { bubbles: true }));
+      body.focus();
+      uploadStatus.textContent = "動画を挿入しました：" + uploaded.filename;
+    } catch (error) {
+      showUploadError(error, uploadStatus);
+    } finally {
+      videoUploadButton.disabled = false;
+      uploadButton.disabled = false;
+      videoUploadInput.value = "";
+    }
+  });
 
   uploadButton.addEventListener("click", function () {
     uploadInput.click();

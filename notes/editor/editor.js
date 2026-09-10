@@ -386,6 +386,19 @@
         return;
       }
 
+      // Render only our video markup, never arbitrary user-provided HTML.
+      if (/^\s*<video\b/i.test(line)) {
+        var videoDocument = new DOMParser().parseFromString(line, "text/html");
+        var video = videoDocument.body.firstElementChild;
+        var source = video && video.getAttribute("src");
+        if (video && video.tagName === "VIDEO" && source && isSafeUrl(source)) {
+          flushParagraph();
+          closeList();
+          html.push('<video controls playsinline preload="metadata" src="' + escapeHtml(previewImageUrl(source)) + '"></video>');
+          return;
+        }
+      }
+
       if (!line.trim()) {
         flushParagraph();
         closeList();

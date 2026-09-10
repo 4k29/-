@@ -536,6 +536,7 @@ footer p {
 
 .article-image figcaption {
   margin-top: 9px;
+  text-align: center;
   color: var(--muted);
   font-size: 9px;
   line-height: 1.55;
@@ -850,6 +851,7 @@ footer p {
 
 .article-body > p:has(> img) + p:has(> em:only-child) {
   margin: 9px 0 48px;
+  text-align: center;
   color: var(--muted);
   font-size: 9px;
   line-height: 1.55;
@@ -857,6 +859,30 @@ footer p {
 
 .article-body > p:has(> img) + p > em:only-child {
   font-style: normal;
+}
+
+/* Captions can share the image paragraph or follow it in older notes. */
+.article-body > p:has(> img):has(+ p > em:only-child) > img,
+.article-body > p:has(> img):has(> em:last-child) > img {
+  margin-bottom: 0;
+}
+
+.article-body > p:has(> img) > em:last-child {
+  display: block;
+  margin: 8px 0 40px;
+  color: var(--muted);
+  font-size: 10px;
+  font-style: normal;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.article-body video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 40px 0;
+  background: #111;
 }
 
 .related-notes {
