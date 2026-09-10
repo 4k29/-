@@ -3,6 +3,7 @@
 
   var STORAGE_KEY = "4k29-theme";
   var root = document.documentElement;
+  var mobileQuery = window.matchMedia ? window.matchMedia("(max-width: 560px)") : null;
 
   function systemTheme() {
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches
@@ -50,6 +51,16 @@
     }
   }
 
+  function placeToggle(button) {
+    var nav = document.querySelector(".global-header .global-nav");
+    if (mobileQuery && mobileQuery.matches && nav) {
+      if (button.parentNode !== nav) nav.appendChild(button);
+      return;
+    }
+
+    if (button.parentNode !== document.body) document.body.appendChild(button);
+  }
+
   function mountToggle() {
     if (document.getElementById("theme-toggle")) return;
 
@@ -59,6 +70,7 @@
     button.type = "button";
     document.body.appendChild(button);
 
+    placeToggle(button);
     applyTheme(root.dataset.theme || systemTheme());
 
     button.addEventListener("click", function () {
@@ -67,13 +79,60 @@
       applyTheme(next);
       saveTheme(next);
     });
+
+    if (mobileQuery) {
+      if (typeof mobileQuery.addEventListener === "function") {
+        mobileQuery.addEventListener("change", function () { placeToggle(button); });
+      } else if (typeof mobileQuery.addListener === "function") {
+        mobileQuery.addListener(function () { placeToggle(button); });
+      }
+    }
+  }
+
+  function mountHeaderReveal() {
+    var header = document.querySelector(".global-header");
+    if (!header) return;
+
+    var lastY = Math.max(window.scrollY || 0, 0);
+    var ticking = false;
+    var topZone = 72;
+    var delta = 3;
+
+    function updateHeader() {
+      var currentY = Math.max(window.scrollY || 0, 0);
+      header.classList.toggle("is-scrolled", currentY > 8);
+
+      if (currentY <= topZone) {
+        header.classList.remove("is-hidden");
+      } else if (currentY > lastY + delta) {
+        header.classList.add("is-hidden");
+      } else if (currentY < lastY - delta) {
+        header.classList.remove("is-hidden");
+      }
+
+      lastY = currentY;
+      ticking = false;
+    }
+
+    updateHeader();
+
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateHeader);
+    }, { passive: true });
+  }
+
+  function mountUi() {
+    mountToggle();
+    mountHeaderReveal();
   }
 
   applyTheme(storedTheme() || systemTheme());
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", mountToggle, { once: true });
+    document.addEventListener("DOMContentLoaded", mountUi, { once: true });
   } else {
-    mountToggle();
+    mountUi();
   }
 }());
