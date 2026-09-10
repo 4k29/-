@@ -147,10 +147,18 @@
       window.alert("公開機能を読み込めませんでした。ページを再読み込みしてください。");
       return;
     }
-    if (!window.confirm("この記事を公開しますか？")) return;
+
+    var editing = window.NotePublishedEdit || null;
+    if (editing && data.slug !== editing.slug) {
+      window.alert("公開済み記事のURLはEditorから変更できません。新しいURLにする場合は新規記事として作成してください。");
+      return;
+    }
+
+    var actionLabel = editing ? "更新" : "公開";
+    if (!window.confirm("この記事を" + actionLabel + "しますか？")) return;
 
     setBusy(true);
-    status.textContent = "公開前に下書きを保存中…";
+    status.textContent = actionLabel + "前に下書きを保存中…";
 
     try {
       if (window.EditorGitHub && window.EditorGitHub.isReady()) {
@@ -160,24 +168,44 @@
         }));
       }
 
-      status.textContent = "GitHubへ公開中…";
+      status.textContent = "GitHubへ" + actionLabel + "中…";
+      var targetPath = editing && editing.path
+        ? editing.path
+        : "_notes/" + data.slug + ".md";
+
       await window.EditorPublicGitHub.commit([
         {
-          path: "_notes/" + data.slug + ".md",
+          path: targetPath,
           content: buildMarkdown(data)
         }
-      ], "Publish note: " + data.title);
+      ], (editing ? "Update note: " : "Publish note: ") + data.title);
 
-      status.textContent = "公開しました";
-      window.alert("公開しました。GitHub Pagesへの反映後、記事ページに表示されます。");
+      status.textContent = actionLabel + "しました";
+      window.alert(actionLabel + "しました。GitHub Pagesへの反映後、記事ページに表示されます。");
     } catch (error) {
-      status.textContent = "公開できませんでした";
+      status.textContent = actionLabel + "できませんでした";
       window.alert(window.EditorPublicGitHub.permissionMessage(error));
     } finally {
       setBusy(false);
     }
   }
 
+  function loadPublishedEditor() {
+    if (!document.querySelector('link[href="published-articles.css"]')) {
+      var stylesheet = document.createElement("link");
+      stylesheet.rel = "stylesheet";
+      stylesheet.href = "published-articles.css?v=20260910-1";
+      document.head.appendChild(stylesheet);
+    }
+
+    if (!document.querySelector('script[src^="published-articles.js"]')) {
+      var script = document.createElement("script");
+      script.src = "published-articles.js?v=20260910-1";
+      document.body.appendChild(script);
+    }
+  }
+
   saveButton.addEventListener("click", overwriteDraft);
   publishButton.addEventListener("click", publish);
+  loadPublishedEditor();
 }());
