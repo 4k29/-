@@ -17,7 +17,7 @@ tags: ["Apple Watch","Siri AI"]
 ![Apple Watch Ultra 4](../images/notes/AppleWatch-SiriAI-2.jpg)
 *Apple Watch Ultra 4*
 
-突然だが、Apple Watchは、パーソナルコンテキストを凝縮したような存在だと思う。
+突然だが、Apple Watchは、パーソナルコンテキストを凝縮したような存在だろう。
 
 パーソナルコンテキストとは、その人の行動や習慣、置かれている状況など、個人を理解するための背景情報のことだ。AIがその人に合った支援をするには、質問そのものに加え、こうした背景を把握することが重要になる。
 
