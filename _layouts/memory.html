@@ -131,12 +131,6 @@
     {% assign previous_candidate = memory %}
   {% endfor %}
 
-  {% if next_memory %}
-    {% assign next_url = next_memory.url %}
-  {% else %}
-    {% assign next_url = '/404.html' %}
-  {% endif %}
-
   <div class="memory-page" id="top">
     {% include site-header.html %}
 
@@ -161,7 +155,7 @@
 
       <nav class="memory-pagination" aria-label="Memory navigation">
         {% if before_memory %}<a href="{{ before_memory.url | relative_url }}">← Before</a>{% else %}<span></span>{% endif %}
-        <a href="{{ next_url | relative_url }}">Next →</a>
+        {% if next_memory %}<a href="{{ next_memory.url | relative_url }}">Next →</a>{% else %}<span></span>{% endif %}
       </nav>
     </main>
 
@@ -175,3 +169,4 @@
   </div>
 </body>
 </html>
+

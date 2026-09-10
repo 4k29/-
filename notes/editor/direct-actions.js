@@ -191,7 +191,7 @@
   }
 
   function loadPublishedEditor() {
-    if (!document.querySelector('link[href="published-articles.css"]')) {
+    if (!document.querySelector('link[href^="published-articles.css"]')) {
       var stylesheet = document.createElement("link");
       stylesheet.rel = "stylesheet";
       stylesheet.href = "published-articles.css?v=20260910-1";
@@ -209,3 +209,4 @@
   publishButton.addEventListener("click", publish);
   loadPublishedEditor();
 }());
+

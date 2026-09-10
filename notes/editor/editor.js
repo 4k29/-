@@ -36,6 +36,7 @@
   window.noteVideoPreviews = new Map();
   var lastPreviewBody = null;
   var videoSelection = null;
+  var imageSelection = null;
   var imageDialog = document.getElementById("image-dialog");
   var dialogImagePath = document.getElementById("dialog-image-path");
   var dialogImageAlt = document.getElementById("dialog-image-alt");
@@ -202,6 +203,8 @@
   }
 
   function saveDraft() {
+    window.clearTimeout(saveTimer);
+    saveTimer = null;
     var data = getData();
     var updatedAt = new Date().toISOString();
     localUpdatedAt = updatedAt;
@@ -249,9 +252,9 @@
   }
 
   function loadDraft() {
-    var stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) return false;
     try {
+      var stored = localStorage.getItem(STORAGE_KEY);
+      if (!stored) return false;
       var parsed = JSON.parse(stored);
       var record = parsed && parsed.data ? parsed : {
         data: parsed,
@@ -526,6 +529,7 @@
       videoPath.focus();
     }
     if (action === "image") {
+      imageSelection = [fields.body.selectionStart, fields.body.selectionEnd];
       dialogImagePath.value = "";
       dialogImageAlt.value = "";
       dialogImageCaption.value = "";
@@ -548,8 +552,11 @@
 
     var markdown = "![" + alt.replace(/\]/g, "") + "](" + path.replace(/\s/g, "%20") + ")";
     if (caption) markdown += "\n*" + caption.replace(/\*/g, "") + "*";
-    insertText("\n\n", "\n\n", markdown);
+    var selection = imageSelection || [fields.body.selectionStart, fields.body.selectionEnd];
+    fields.body.setRangeText("\n\n" + markdown + "\n\n", selection[0], selection[1], "end");
     imageDialog.close();
+    fields.body.focus();
+    updateAll();
     return true;
   }
 
@@ -643,7 +650,13 @@
     if (!window.confirm("端末内とGitHubの現在の下書きを消して、新規作成しますか？")) return;
     window.clearTimeout(githubSaveTimer);
     githubSaveTimer = null;
-    localStorage.removeItem(STORAGE_KEY);
+    window.clearTimeout(saveTimer);
+    saveTimer = null;
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (error) {
+      // Continue resetting the form when browser storage is unavailable.
+    }
     localUpdatedAt = "";
     if (githubApi) {
       githubApi.deleteDraft("notes").catch(function () {
@@ -679,13 +692,13 @@
   });
 
   document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "hidden" && githubSaveTimer) syncGitHubDraft();
+    if (document.visibilityState !== "hidden") return;
+    if (saveTimer) saveDraft();
+    if (githubSaveTimer) syncGitHubDraft();
   });
 
   if (!loadDraft()) {
     fields.date.value = jstDate();
-    updatePreview();
-  } else {
     updatePreview();
   }
 
@@ -693,3 +706,4 @@
     window.EditorGitHub.onReady(connectGitHub);
   }
 })();
+

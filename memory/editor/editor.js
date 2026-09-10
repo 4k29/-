@@ -196,13 +196,20 @@
         var store = transaction.objectStore(DB_STORE);
         var request = action(store);
 
+        // A successful request can still be rolled back before commit.
+        var result;
         request.onsuccess = function () {
-          resolve(request.result);
+          result = request.result;
         };
         request.onerror = function () {
           reject(request.error || new Error("IndexedDB request failed"));
         };
         transaction.oncomplete = function () {
+          database.close();
+          resolve(result);
+        };
+        transaction.onabort = function () {
+          reject(transaction.error || new Error("IndexedDB transaction aborted"));
           database.close();
         };
         transaction.onerror = function () {
@@ -248,6 +255,8 @@
   }
 
   function saveDraft() {
+    window.clearTimeout(saveTimer);
+    saveTimer = null;
     var updatedAt = new Date().toISOString();
     localUpdatedAt = updatedAt;
     var draft = buildDraftRecord(updatedAt);
@@ -939,6 +948,8 @@
 
   document.getElementById("new-button").addEventListener("click", async function () {
     if (!window.confirm("端末内とGitHubの現在の下書きを消して、新規作成しますか？")) return;
+    window.clearTimeout(saveTimer);
+    saveTimer = null;
     window.clearTimeout(githubSyncTimer);
     githubSyncTimer = null;
     var githubPaths = photos.map(githubFilePath).concat(pendingDeletedPaths).filter(Boolean);
@@ -982,10 +993,13 @@
   });
 
   document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "hidden" && githubSyncTimer) syncGitHubDraft();
+    if (document.visibilityState !== "hidden") return;
+    if (saveTimer) saveDraft();
+    if (githubSyncTimer) syncGitHubDraft();
   });
 
   if (window.EditorGitHub) {
     window.EditorGitHub.onReady(connectGitHub);
   }
 }());
+
