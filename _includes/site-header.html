@@ -1,14 +1,4 @@
-{% if page.collection == 'memories' %}
-  {% assign header_max_width = '1080px' %}
-  {% assign header_gutter = 'clamp(32px, 4vw, 40px)' %}
-{% elsif page.collection == 'notes' or page.url == '/notes/' or page.url == '/sitemap/' %}
-  {% assign header_max_width = '800px' %}
-  {% assign header_gutter = 'clamp(32px, 4vw, 48px)' %}
-{% else %}
-  {% assign header_max_width = 'var(--content-width)' %}
-  {% assign header_gutter = 'clamp(32px, 4vw, 40px)' %}
-{% endif %}
-<header class="global-header" style="width:min(calc(100% - {{ header_gutter }}), {{ header_max_width }}); margin:18px auto 0;">
+<header class="global-header">
   <a class="global-brand" href="{{ '/' | relative_url }}">4k29</a>
   <nav class="global-nav" aria-label="メインナビゲーション">
     <a href="{{ '/notes/' | relative_url }}"{% if page.url == '/notes/' or page.collection == 'notes' %} aria-current="page"{% endif %}>Notes</a>
