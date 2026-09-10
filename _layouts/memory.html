@@ -15,7 +15,7 @@
 
   <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
   <meta name="description" content="{{ page.description | escape }}" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
   <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
 
@@ -45,6 +45,7 @@
     "url": {{ page.url | absolute_url | jsonify }},
     "dateCreated": {{ page.date | date_to_xmlschema | jsonify }},
     "inLanguage": "ja",
+    {% if page.photos and page.photos.size > 0 %}"primaryImageOfPage": {{ page.photos.first.src | absolute_url | jsonify }},{% endif %}
     "isPartOf": {
       "@type": "WebSite",
       "name": "4k29",
@@ -63,6 +64,33 @@
         "caption": {{ photo.caption | jsonify }}
       }{% unless forloop.last %},{% endunless %}
       {% endfor %}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "4k29",
+        "item": {{ '/' | absolute_url | jsonify }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Memory",
+        "item": {{ '/memory/' | absolute_url | jsonify }}
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": {{ page.title | jsonify }},
+        "item": {{ page.url | absolute_url | jsonify }}
+      }
     ]
   }
   </script>
