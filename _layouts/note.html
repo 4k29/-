@@ -108,6 +108,14 @@
     {% assign style_version = site.time | date: "%s" %}
   {% endunless %}
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v={{ style_version }}" />
+  <style>
+    .note-hero h1 {
+      text-wrap: wrap;
+      word-break: normal;
+      overflow-wrap: normal;
+      line-break: strict;
+    }
+  </style>
 </head>
 
 <body>
@@ -131,15 +139,7 @@
             Note /
             <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y.%m.%d" }}</time>
           </p>
-          <h1>
-            {% if page.title_lines %}
-              {% for line in page.title_lines %}
-              <span class="title-line">{{ line | escape }}</span>
-              {% endfor %}
-            {% else %}
-              {{ page.title | escape }}
-            {% endif %}
-          </h1>
+          <h1>{{ page.title | escape }}</h1>
         </header>
 
         <div class="article-body">
