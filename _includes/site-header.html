@@ -1,12 +1,10 @@
 <style>
   :root {
-    --site-shell-width: 680px;
+    --site-shell-width: 800px;
     --site-shell-gutter: 40px;
     --site-shell-gutter-mobile: 32px;
   }
 
-  /* Public pages share one horizontal frame. This intentionally overrides
-     older page-specific Note/Memory widths so every page lines up. */
   .global-header,
   body > main,
   body > footer,
@@ -63,8 +61,6 @@
     color: var(--text);
   }
 
-  /* Article internals previously had an extra 600/720px measure. Keep the
-     typography, but let the page use the same 680px frame as everything else. */
   .note-hero h1,
   .article-body,
   .article-share,
@@ -98,6 +94,6 @@
   <a class="global-brand" href="{{ '/' | relative_url }}">4k29</a>
   <nav class="global-nav" aria-label="メインナビゲーション">
     <a href="{{ '/notes/' | relative_url }}"{% if page.url == '/notes/' or page.collection == 'notes' %} aria-current="page"{% endif %}>Notes</a>
-    <a href="{{ '/' | relative_url }}#memory"{% if page.collection == 'memories' %} aria-current="page"{% endif %}>Memory</a>
+    <a href="{{ '/memory/' | relative_url }}"{% if page.url == '/memory/' or page.collection == 'memories' %} aria-current="page"{% endif %}>Memory</a>
   </nav>
 </header>
