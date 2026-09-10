@@ -73,14 +73,12 @@
   <link rel="stylesheet" href="{{ '/enhancements.css' | relative_url }}" />
   <script src="{{ '/theme.js' | relative_url }}" defer></script>
   <style>
-    .memory-nav,
     .memory-content,
     .memory-footer {
       width: min(calc(100% - 40px), var(--content-width));
     }
 
     @media (max-width: 560px) {
-      .memory-nav,
       .memory-content,
       .memory-footer {
         width: calc(100% - 32px);
@@ -112,16 +110,7 @@
   {% endif %}
 
   <div class="memory-page" id="top">
-    <header class="memory-nav">
-      <div class="memory-nav-left">
-        <a href="{{ '/' | relative_url }}">Home</a>
-        {% if before_memory %}<span>/</span><a href="{{ before_memory.url | relative_url }}">Before</a>{% endif %}
-      </div>
-      <p>{{ page.date_display | escape }} - {{ page.title | escape }}</p>
-      <div class="memory-nav-right">
-        <a href="{{ next_url | relative_url }}">Next</a>
-      </div>
-    </header>
+    {% include site-header.html %}
 
     <main class="memory-content" id="main-content">
       <section class="memory-intro">
@@ -141,6 +130,11 @@
         </figure>
         {% endfor %}
       </div>
+
+      <nav class="memory-pagination" aria-label="Memory navigation">
+        {% if before_memory %}<a href="{{ before_memory.url | relative_url }}">← Before</a>{% else %}<span></span>{% endif %}
+        <a href="{{ next_url | relative_url }}">Next →</a>
+      </nav>
     </main>
 
     <footer class="memory-footer">
@@ -148,7 +142,6 @@
       <div class="memory-footer-links">
         <a href="{{ '/sitemap/' | relative_url }}">Sitemap</a>
         <a href="#top">Back to top ↑</a>
-        <a href="{{ next_url | relative_url }}">Next</a>
       </div>
     </footer>
   </div>
