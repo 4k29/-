@@ -65,7 +65,6 @@ html[data-theme="light"] .note-index-meta span::before {
   color: #aaa9a4;
 }
 
-/* Keep interactive controls clearly keyboard-visible. */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -76,7 +75,6 @@ select:focus-visible,
   outline-offset: 4px;
 }
 
-/* Slightly improve small navigation/footer text contrast and legibility. */
 .note-nav,
 .memory-nav {
   font-size: 11px;
@@ -96,7 +94,6 @@ nav a,
   font-size: 11px;
 }
 
-/* One consistent reading measure for every Note article. */
 .note-nav,
 .note-content,
 .note-footer {
@@ -167,7 +164,6 @@ nav a,
   margin-top: 0;
 }
 
-/* References use the same compact, bullet-free format in every article. */
 .article-body h2#参考 + ul,
 .article-body h2#参考 + ol,
 .article-body h2#references + ul,
@@ -208,7 +204,26 @@ nav a,
   font-size: 11px;
 }
 
-/* Minimal half-disc theme control shared by public pages. */
+.footer-links,
+.memory-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.sitemap-section {
+  margin: 58px 0 72px;
+}
+
+.sitemap-section + .sitemap-section {
+  margin-top: 0;
+}
+
+.sitemap-section .related-notes-heading > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
 .theme-toggle {
   position: fixed;
   z-index: 1000;
@@ -294,6 +309,10 @@ nav a,
   .article-body h2#references + ol {
     font-size: 13.5px;
     line-height: 1.55;
+  }
+
+  .sitemap-section {
+    margin: 46px 0 58px;
   }
 }
 
