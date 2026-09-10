@@ -3,9 +3,7 @@ layout: null
 permalink: /sitemap.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>{{ '/' | absolute_url }}</loc>
   </url>
@@ -20,13 +18,7 @@ permalink: /sitemap.xml
   {% for note in sorted_notes %}
   <url>
     <loc>{{ note.url | absolute_url }}</loc>
-    <lastmod>{{ note.last_modified_at | default: note.date | date_to_xmlschema }}</lastmod>
-    {% if note.image %}
-    <image:image>
-      <image:loc>{{ note.image | absolute_url }}</image:loc>
-      <image:title>{{ note.title | escape }}</image:title>
-    </image:image>
-    {% endif %}
+    <lastmod>{{ note.last_modified_at | default: note.date | date: "%Y-%m-%d" }}</lastmod>
   </url>
   {% endfor %}
 
@@ -34,13 +26,7 @@ permalink: /sitemap.xml
   {% for memory in sorted_memories %}
   <url>
     <loc>{{ memory.url | absolute_url }}</loc>
-    <lastmod>{{ memory.last_modified_at | default: memory.date | date_to_xmlschema }}</lastmod>
-    {% for photo in memory.photos %}
-    <image:image>
-      <image:loc>{{ photo.src | absolute_url }}</image:loc>
-      {% if photo.caption %}<image:title>{{ photo.caption | escape }}</image:title>{% endif %}
-    </image:image>
-    {% endfor %}
+    <lastmod>{{ memory.last_modified_at | default: memory.date | date: "%Y-%m-%d" }}</lastmod>
   </url>
   {% endfor %}
 </urlset>
