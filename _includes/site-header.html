@@ -1,39 +1,61 @@
 <style>
+  :root {
+    --site-shell-width: 680px;
+    --site-shell-gutter: 40px;
+    --site-shell-gutter-mobile: 32px;
+  }
+
+  /* Public pages share one horizontal frame. This intentionally overrides
+     older page-specific Note/Memory widths so every page lines up. */
+  .global-header,
+  body > main,
+  body > footer,
+  .note-content,
+  .note-footer,
+  .memory-content,
+  .memory-footer {
+    width: min(calc(100% - var(--site-shell-gutter)), var(--site-shell-width)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   .global-header {
-    width: min(calc(100% - 40px), 680px);
-    height: 64px;
-    margin: 18px auto 0;
+    height: 64px !important;
+    margin-top: 18px !important;
     border-bottom: 1px solid var(--line);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-    font-style: normal;
-    letter-spacing: -0.01em;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif !important;
+    font-style: normal !important;
+    letter-spacing: -0.01em !important;
   }
 
   .global-header .global-brand {
     color: var(--text);
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 560;
-    line-height: 1;
-    letter-spacing: .04em;
+    font-family: inherit !important;
+    font-size: 12px !important;
+    font-style: normal !important;
+    font-weight: 560 !important;
+    line-height: 1 !important;
+    letter-spacing: .04em !important;
   }
 
   .global-header .global-nav {
-    display: flex;
-    align-items: center;
-    gap: 22px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 22px !important;
   }
 
-  .global-header .global-nav a {
+  .global-header .global-nav a,
+  .global-header .global-nav a[aria-current="page"] {
     color: var(--muted);
-    font-family: inherit;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.01em;
+    font-family: inherit !important;
+    font-size: 11px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.01em !important;
   }
 
   .global-header .global-nav a:hover,
@@ -41,21 +63,34 @@
     color: var(--text);
   }
 
-  .global-header .global-nav a[aria-current="page"] {
-    font-weight: 520;
+  /* Article internals previously had an extra 600/720px measure. Keep the
+     typography, but let the page use the same 680px frame as everything else. */
+  .note-hero h1,
+  .article-body,
+  .article-share,
+  .related-notes {
+    max-width: 100% !important;
   }
 
   @media (max-width: 560px) {
-    .global-header {
-      width: calc(100% - 32px);
+    .global-header,
+    body > main,
+    body > footer,
+    .note-content,
+    .note-footer,
+    .memory-content,
+    .memory-footer {
+      width: calc(100% - var(--site-shell-gutter-mobile)) !important;
     }
 
     .global-header .global-nav {
-      gap: 16px;
+      gap: 16px !important;
     }
 
-    .global-header .global-nav a {
-      font-size: 10.5px;
+    .global-header .global-nav a,
+    .global-header .global-nav a[aria-current="page"] {
+      font-size: 10.5px !important;
+      font-weight: 400 !important;
     }
   }
 </style>
