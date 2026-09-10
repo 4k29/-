@@ -11,9 +11,7 @@ tags: ["Apple Watch","Siri AI"]
 
 今回のApple Watch Series 12とApple Watch Ultra 4の発表を見て、Apple Watchは今後、Siri AIの中核になっていくのではないかと思った。身に着ける人の生活や状態に関する情報が、これほど密接に集まるデバイスだからだ。こんな話をしていこうと思う。
 
-
-
-![Apple Watch  Series 12](../images/notes/AppleWatch-SiriAI-1.jpg)
+![Apple Watch Series 12](../images/notes/AppleWatch-SiriAI-1.jpg)
 *Apple Watch Series 12*
 
 ![Apple Watch Ultra 4](../images/notes/AppleWatch-SiriAI-2.jpg)
@@ -59,12 +57,9 @@ Apple Watchが重要になると思うのは、その背景情報を、日常生
 
 Siri AIが、その人のことを踏まえて支援する存在へと進化するなら、Apple Watchの役割はさらに大きくなると思う。Series 12とUltra 4で示された方向性を見て、Apple Watchが、その中核になり得ると感じている。
 
-参考:
+## 参考
 
-[Apple Watch Series 12](https://www.apple.com/jp/apple-watch-series-12/) - Apple公式ページ
-
-[Apple Watch Ultra 4](https://www.apple.com/jp/apple-watch-ultra-4/) - Apple公式ページ
-
-[Apple unveils Apple Watch Ultra 4](https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/)- Apple Newsroom
-
-[About Audio Intelligence features on Apple Watch Series 12 and Apple Watch Ultra 4](https://support.apple.com/en-us/148354) - Apple Support
+- [Apple Watch Series 12](https://www.apple.com/jp/apple-watch-series-12/) - Apple公式ページ
+- [Apple Watch Ultra 4](https://www.apple.com/jp/apple-watch-ultra-4/) - Apple公式ページ
+- [Apple unveils Apple Watch Ultra 4](https://www.apple.com/newsroom/2026/09/apple-unveils-apple-watch-ultra-4/) - Apple Newsroom
+- [About Audio Intelligence features on Apple Watch Series 12 and Apple Watch Ultra 4](https://support.apple.com/en-us/148354) - Apple Support
