@@ -50,6 +50,6 @@ Appleは2019年、iPad向けのOSに「iPadOS」という名前を与えた。�
 
 参考
 
-[Apple unveils iPhone Duo](https://www.apple.com/newsroom/2026/09/apple-unveils-iphone-duo/) - Apple Newsroom
+[Apple unveils iPhone Duo](https://www.apple.com/jp/newsroom/2026/09/apple-unveils-iphone-duo/) - Apple Newsroom
 
-[The new iPadOS powers unique experiences designed for iPad](https://www.apple.com/newsroom/2019/06/the-new-ipados-powers-unique-experiences-designed-for-ipad/) - Apple Newsroom
+[The new iPadOS powers unique experiences designed for iPad](https://www.apple.com/jp/newsroom/2019/06/the-new-ipados-powers-unique-experiences-designed-for-ipad/) - Apple Newsroom
