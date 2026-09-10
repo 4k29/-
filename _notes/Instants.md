@@ -2,7 +2,7 @@
 title: "Instantsに思うこと"
 description: "Instagramの新機能「Instants」は、これまでの“映えるSNS”とは逆方向の思想を持っているように見える。Metaが目指す次のSNS像について考える。"
 date: "2026-05-21 00:00:00 +0900"
-last_modified_at: "2026-05-21 00:00:00 +0900"
+last_modified_at: "2026-09-10 00:00:00 +0900"
 permalink: "/notes/Instants.html"
 image: "/images/ogp/Instants.png"
 image_alt: "Instantsに思うこと"
@@ -63,3 +63,8 @@ Instantsは単体で見れば、小さな機能に過ぎない。
 Metaは長い間、「より広く見られるSNS」を作ってきた。  
 しかしInstantsでは、むしろ逆方向、**限られた相手と、消えていく瞬間を共有すること**へと重心を移し始めているように見える。  
 だからこそ、「インスタ映え」を生み出したInstagramが、“盛らなくていい”機能を出したことには、大きな意味があると思う。
+
+## 参考
+
+- [Instagramの新機能・単独アプリ「Instants」で、ありのままの瞬間をシェア](https://about.fb.com/ja/news/2026/05/instants/) - Meta
+- [Ray-Ban Meta AIグラス](https://www.ray-ban.com/japan/ray-ban-meta-ai-glasses) - Ray-Ban公式
