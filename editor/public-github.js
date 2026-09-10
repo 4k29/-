@@ -75,6 +75,41 @@
     return value;
   }
 
+  function encodeContentPath(path) {
+    return validatePath(path).split("/").map(encodeURIComponent).join("/");
+  }
+
+  function decodeBase64Utf8(value) {
+    var binary = window.atob(String(value || "").replace(/\s/g, ""));
+    var bytes = new Uint8Array(binary.length);
+    for (var index = 0; index < binary.length; index += 1) {
+      bytes[index] = binary.charCodeAt(index);
+    }
+    return new TextDecoder("utf-8").decode(bytes);
+  }
+
+  async function listDirectory(path) {
+    var result = await apiRequest(
+      repoPath("/contents/" + encodeContentPath(path) + "?ref=" + encodeURIComponent(branch))
+    );
+    if (!Array.isArray(result)) throw new Error("公開済み記事の一覧を取得できませんでした");
+    return result;
+  }
+
+  async function readText(path) {
+    var result = await apiRequest(
+      repoPath("/contents/" + encodeContentPath(path) + "?ref=" + encodeURIComponent(branch))
+    );
+    if (!result || result.type !== "file" || result.encoding !== "base64") {
+      throw new Error("記事ファイルを読み込めませんでした");
+    }
+    return {
+      path: result.path,
+      sha: result.sha,
+      content: decodeBase64Utf8(result.content)
+    };
+  }
+
   function blobToBase64(blob) {
     return new Promise(function (resolve, reject) {
       var reader = new FileReader();
@@ -201,6 +236,9 @@
   }
 
   window.EditorPublicGitHub = Object.freeze({
+    isReady: function () { return Boolean(readToken()); },
+    listDirectory: listDirectory,
+    readText: readText,
     commit: commit,
     permissionMessage: permissionMessage
   });
