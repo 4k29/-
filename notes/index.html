@@ -1,7 +1,7 @@
 ---
 layout: null
 title: Notes
-description: 記事一覧
+description: Apple、Nothing、iPhone、Apple Watch、UI・UX、デザイン、写真についてのレビューと考察をまとめています。
 permalink: /notes/
 ---
 <!DOCTYPE html>
@@ -14,22 +14,21 @@ permalink: /notes/
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KK7MDCLBGT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>Notes / {{ site.title | escape }}</title>
+  <title>Apple・Nothing・UI・デザインの記事 | 4k29</title>
   <meta name="description" content="{{ page.description | escape }}" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
 
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:site_name" content="{{ site.title | escape }}" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Notes / {{ site.title | escape }}" />
+  <meta property="og:title" content="Apple・Nothing・UI・デザインの記事 | 4k29" />
   <meta property="og:description" content="{{ page.description | escape }}" />
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   <meta property="og:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
@@ -38,7 +37,7 @@ permalink: /notes/
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@p_horeer" />
   <meta name="twitter:creator" content="@p_horeer" />
-  <meta name="twitter:title" content="Notes / {{ site.title | escape }}" />
+  <meta name="twitter:title" content="Apple・Nothing・UI・デザインの記事 | 4k29" />
   <meta name="twitter:description" content="{{ page.description | escape }}" />
   <meta name="twitter:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
 
@@ -51,6 +50,11 @@ permalink: /notes/
     "description": {{ page.description | jsonify }},
     "url": {{ page.url | absolute_url | jsonify }},
     "inLanguage": "ja",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "4k29",
+      "url": {{ '/' | absolute_url | jsonify }}
+    },
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": {{ sorted_notes | size }},
@@ -113,7 +117,7 @@ permalink: /notes/
 
     <footer class="note-footer">
       <p>© {{ site.time | date: "%Y" }} 4k29</p>
-      <a href="#top">Back to top ↑</a>
+      <div class="footer-links"><a href="{{ '/sitemap/' | relative_url }}">Sitemap</a><a href="#top">Back to top ↑</a></div>
     </footer>
   </div>
 </body>
