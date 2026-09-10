@@ -25,7 +25,7 @@
     if (!button) return;
 
     var nextTheme = theme === "light" ? "dark" : "light";
-    button.textContent = theme === "light" ? "☾" : "☀";
+    button.dataset.currentTheme = theme;
     button.setAttribute("aria-label", nextTheme === "light"
       ? "ライトモードに切り替える"
       : "ダークモードに切り替える");
@@ -38,7 +38,7 @@
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
     } catch (error) {
-      // The selected theme still applies for this page even if storage is blocked.
+      // Keep the selected theme for this page even when storage is unavailable.
     }
   }
 
@@ -49,6 +49,7 @@
     button.id = "theme-toggle";
     button.className = "theme-toggle";
     button.type = "button";
+    button.innerHTML = '<span class="theme-toggle-icon" aria-hidden="true"></span>';
     document.body.appendChild(button);
 
     applyTheme(root.dataset.theme || systemTheme());
