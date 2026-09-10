@@ -156,51 +156,19 @@
           <a href="{{ '/notes/' | relative_url }}">View all ↗</a>
         </div>
         <div class="row-list">
-          {% assign related_count = 0 %}
-          {% assign shown_urls = '|' %}
-
-          {% comment %}Prefer genuinely related notes that share at least one tag.{% endcomment %}
+          {% assign more_count = 0 %}
           {% for note in sorted_notes %}
             {% unless note.url == page.url %}
-              {% assign tag_match = false %}
-              {% for tag in note.tags %}
-                {% if page.tags contains tag %}
-                  {% assign tag_match = true %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-
-              {% if tag_match and related_count < 3 %}
-                <a href="{{ note.url | relative_url }}" class="row-item compact">
-                  <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%Y.%m.%d" }}</time>
-                  <span class="row-title">{{ note.title | escape }}</span>
-                  <span class="arrow" aria-hidden="true">↗</span>
-                </a>
-                {% capture shown_marker %}|{{ note.url }}|{% endcapture %}
-                {% assign shown_urls = shown_urls | append: shown_marker %}
-                {% assign related_count = related_count | plus: 1 %}
+              {% if more_count < 3 %}
+              <a href="{{ note.url | relative_url }}" class="row-item compact">
+                <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%Y.%m.%d" }}</time>
+                <span class="row-title">{{ note.title | escape }}</span>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+              {% assign more_count = more_count | plus: 1 %}
               {% endif %}
             {% endunless %}
           {% endfor %}
-
-          {% comment %}If there are fewer than three related notes, fill with recent notes.{% endcomment %}
-          {% if related_count < 3 %}
-            {% for note in sorted_notes %}
-              {% unless note.url == page.url %}
-                {% capture note_marker %}|{{ note.url }}|{% endcapture %}
-                {% unless shown_urls contains note_marker %}
-                  {% if related_count < 3 %}
-                    <a href="{{ note.url | relative_url }}" class="row-item compact">
-                      <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%Y.%m.%d" }}</time>
-                      <span class="row-title">{{ note.title | escape }}</span>
-                      <span class="arrow" aria-hidden="true">↗</span>
-                    </a>
-                    {% assign related_count = related_count | plus: 1 %}
-                  {% endif %}
-                {% endunless %}
-              {% endunless %}
-            {% endfor %}
-          {% endif %}
         </div>
       </section>
     </main>
