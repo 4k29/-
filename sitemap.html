@@ -1,7 +1,7 @@
 ---
 layout: null
 title: Sitemap
-description: 4k29の記事と写真ページの一覧。
+description: 4k29の公開ページ一覧。
 permalink: /sitemap/
 ---
 <!DOCTYPE html>
@@ -9,10 +9,11 @@ permalink: /sitemap/
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sitemap / {{ site.title | escape }}</title>
+  <title>サイトマップ | {{ site.title | escape }}</title>
   <meta name="description" content="{{ page.description | escape }}" />
-  <meta name="robots" content="index,follow" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" />
   <link rel="apple-touch-icon" href="{{ '/favicon.png' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
@@ -25,10 +26,30 @@ permalink: /sitemap/
 
     <main class="note-content" id="main-content">
       <header class="archive-hero">
-        <p>All public pages</p>
         <h1>Sitemap</h1>
-        <p class="archive-description">記事とMemoryをまとめて辿れる一覧です。</p>
+        <p class="archive-description">4k29の公開ページ一覧。</p>
       </header>
+
+      <section class="sitemap-section" aria-labelledby="sitemap-pages">
+        <div class="related-notes-heading">
+          <h2 id="sitemap-pages">Pages</h2>
+          <span>3</span>
+        </div>
+        <div class="row-list">
+          <a href="{{ '/' | relative_url }}" class="row-item compact">
+            <span class="row-title">Home</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a href="{{ '/notes/' | relative_url }}" class="row-item compact">
+            <span class="row-title">Notes</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a href="{{ '/memory/' | relative_url }}" class="row-item compact">
+            <span class="row-title">Memory</span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
 
       {% assign sorted_notes = site.notes | sort: "date" | reverse %}
       <section class="sitemap-section" aria-labelledby="sitemap-notes">
@@ -67,7 +88,7 @@ permalink: /sitemap/
 
     <footer class="note-footer">
       <p>© {{ site.time | date: "%Y" }} 4k29</p>
-      <div class="footer-links"><a href="{{ '/notes/' | relative_url }}">Notes</a><a href="#top">Back to top ↑</a></div>
+      <div class="footer-links"><a href="{{ '/' | relative_url }}">Home</a><a href="#top">Back to top ↑</a></div>
     </footer>
   </div>
 </body>
