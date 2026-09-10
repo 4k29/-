@@ -12,6 +12,10 @@ permalink: /sitemap.xml
     <loc>{{ '/notes/' | absolute_url }}</loc>
   </url>
 
+  <url>
+    <loc>{{ '/memory/' | absolute_url }}</loc>
+  </url>
+
   {% assign sorted_notes = site.notes | sort: "date" | reverse %}
   {% for note in sorted_notes %}
   <url>
