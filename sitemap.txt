@@ -1,0 +1,12 @@
+---
+layout: null
+permalink: /sitemap.txt
+---
+{%- assign public_pages = site.pages | where: 'sitemap', true | sort: 'url' -%}
+{%- assign documents = site.notes | concat: site.memories -%}
+{%- assign entries = public_pages | concat: documents -%}
+{%- for entry in entries -%}
+{%- unless entry.noindex or entry.sitemap == false -%}
+{{ entry.url | absolute_url }}
+{% endunless -%}
+{%- endfor -%}
