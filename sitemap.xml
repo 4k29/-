@@ -5,43 +5,41 @@ permalink: /sitemap.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
-    <loc>{{ '/' | absolute_url }}</loc>
-  </url>
-
-  <url>
-    <loc>{{ '/notes/' | absolute_url }}</loc>
-  </url>
-
-  <url>
-    <loc>{{ '/memory/' | absolute_url }}</loc>
-  </url>
+  {% assign public_pages = site.pages | where: 'sitemap', true | sort: 'url' %}
+  {% for entry in public_pages %}
+  {% unless entry.noindex %}
+  <url><loc>{{ entry.url | absolute_url | xml_escape }}</loc></url>
+  {% endunless %}
+  {% endfor %}
 
   {% assign sorted_notes = site.notes | sort: "date" | reverse %}
   {% for note in sorted_notes %}
+  {% unless note.noindex or note.sitemap == false %}
   <url>
-    <loc>{{ note.url | absolute_url }}</loc>
+    <loc>{{ note.url | absolute_url | xml_escape }}</loc>
     <lastmod>{{ note.last_modified_at | default: note.date | date: "%Y-%m-%d" }}</lastmod>
     {% if note.image %}
     <image:image>
-      <image:loc>{{ note.image | absolute_url }}</image:loc>
+      <image:loc>{{ note.image | absolute_url | xml_escape }}</image:loc>
     </image:image>
     {% endif %}
   </url>
+  {% endunless %}
   {% endfor %}
 
   {% assign sorted_memories = site.memories | sort: "date" | reverse %}
   {% for memory in sorted_memories %}
+  {% unless memory.noindex or memory.sitemap == false %}
   <url>
-    <loc>{{ memory.url | absolute_url }}</loc>
-    <lastmod>{{ memory.last_modified_at | default: memory.date | date: "%Y-%m-%d" }}</lastmod>
+    <loc>{{ memory.url | absolute_url | xml_escape }}</loc>
     {% for photo in memory.photos %}
       {% if photo.src %}
     <image:image>
-      <image:loc>{{ photo.src | absolute_url }}</image:loc>
+      <image:loc>{{ photo.src | absolute_url | xml_escape }}</image:loc>
     </image:image>
       {% endif %}
     {% endfor %}
   </url>
+  {% endunless %}
   {% endfor %}
 </urlset>

@@ -1,4 +1,7 @@
 ---
+sitemap: true
+seo_title: "Notes — ガジェット・デザイン・テクノロジーの考察"
+seo_description: "AppleやNothingなどのガジェット、サービス、デザインについて考える記事一覧。使用レビューや設計思想、ユーザー体験の考察をまとめています。"
 layout: null
 title: Notes
 description: ガジェットをめぐる考察。
@@ -19,35 +22,15 @@ permalink: /notes/
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>製品・デザイン・テクノロジーの考察 | 4k29</title>
-  <meta name="description" content="{{ page.description | escape }}" />
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-  <link rel="canonical" href="{{ page.url | absolute_url }}" />
-  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
-
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="og:site_name" content="{{ site.title | escape }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="製品・デザイン・テクノロジーの考察 | 4k29" />
-  <meta property="og:description" content="{{ page.description | escape }}" />
-  <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
-  <meta property="og:image:alt" content="4k29 Notes" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@p_horeer" />
-  <meta name="twitter:creator" content="@p_horeer" />
-  <meta name="twitter:title" content="製品・デザイン・テクノロジーの考察 | 4k29" />
-  <meta name="twitter:description" content="{{ page.description | escape }}" />
-  <meta name="twitter:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
+  {% include seo.html %}
 
   {% assign sorted_notes = site.notes | sort: "date" | reverse %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "製品・デザイン・テクノロジーの考察 | 4k29",
-    "description": {{ page.description | jsonify }},
+    "name": {{ seo_document_title | jsonify }},
+    "description": {{ seo_description | jsonify }},
     "url": {{ page.url | absolute_url | jsonify }},
     "inLanguage": "ja",
     "isPartOf": {

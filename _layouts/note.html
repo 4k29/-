@@ -13,44 +13,16 @@
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
-  <meta name="description" content="{{ page.description | escape }}" />
-  <meta name="author" content="{{ page.author | default: 'うまいしか' | escape }}" />
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-  <link rel="canonical" href="{{ page.url | absolute_url }}" />
-  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
-
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="og:site_name" content="{{ site.title | escape }}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{{ page.title | escape }}" />
-  <meta property="og:description" content="{{ page.description | escape }}" />
-  <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:image" content="{{ page.image | absolute_url }}" />
-  <meta property="og:image:alt" content="{{ page.image_alt | default: page.title | escape }}" />
-  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
-  <meta property="article:modified_time" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}" />
-  <meta property="article:author" content="{{ '/' | absolute_url }}" />
-  {% for tag in page.tags %}
-  <meta property="article:tag" content="{{ tag | escape }}" />
-  {% endfor %}
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@p_horeer" />
-  <meta name="twitter:creator" content="@p_horeer" />
-  <meta name="twitter:title" content="{{ page.title | escape }}" />
-  <meta name="twitter:description" content="{{ page.description | escape }}" />
-  <meta name="twitter:image" content="{{ page.image | absolute_url }}" />
-  <meta name="twitter:image:alt" content="{{ page.image_alt | default: page.title | escape }}" />
+  {% include seo.html %}
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": {{ page.title | jsonify }},
-    "description": {{ page.description | jsonify }},
+    "description": {{ seo_description | jsonify }},
     "url": {{ page.url | absolute_url | jsonify }},
-    "image": {{ page.image | absolute_url | jsonify }},
+    "image": {{ seo_image | jsonify }},
     "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
     "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
     "inLanguage": "ja",

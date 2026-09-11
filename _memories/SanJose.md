@@ -1,4 +1,6 @@
 ---
+seo_title: "サンノゼ・マウンテンビューの旅の写真"
+seo_description: "2025年8月12日のサンノゼ周辺の写真。Googleのマウンテンビュー、スタンフォード大学などを訪れた旅の記録。"
 title: "San Jose"
 description: "2025.08.12 - San Jose"
 date: "2025-08-12 00:00:00 +0900"

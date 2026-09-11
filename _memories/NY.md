@@ -1,4 +1,6 @@
 ---
+seo_title: "ニューヨークの写真 — 2025年8月16日"
+seo_description: "Apple Fifth Avenue、ブルックリン橋、MoMA、エンパイア・ステート・ビルをめぐった、2025年8月16日のニューヨークの写真記録。"
 title: "New York"
 description: "2025.08.16 - New York"
 date: "2025-08-16 00:00:00 +0900"

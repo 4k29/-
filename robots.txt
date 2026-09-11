@@ -5,4 +5,6 @@ permalink: /robots.txt
 User-agent: *
 Allow: /
 
-Sitemap: https://4k29.github.io/4k29/sitemap.xml
+# Project Pages: crawlers read robots.txt at the host root, not /4k29/.
+# Submit the sitemap directly in Search Console for this URL-prefix property.
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

@@ -1,4 +1,7 @@
 ---
+sitemap: true
+seo_title: "Memory — 旅の写真と記録"
+seo_description: "日本と海外の旅先で撮影した写真の一覧。Apple Park、ニューヨーク、サンフランシスコ、ケアンズ、京都、長野などの記録を公開しています。"
 layout: null
 title: Memory
 description: 旅の記憶
@@ -19,35 +22,15 @@ permalink: /memory/
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>Memory — 写真と記録 | {{ site.title | escape }}</title>
-  <meta name="description" content="{{ page.description | escape }}" />
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-  <link rel="canonical" href="{{ page.url | absolute_url }}" />
-  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
-
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="og:site_name" content="{{ site.title | escape }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Memory — 写真と記録 | {{ site.title | escape }}" />
-  <meta property="og:description" content="{{ page.description | escape }}" />
-  <meta property="og:url" content="{{ page.url | absolute_url }}" />
-  <meta property="og:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
-  <meta property="og:image:alt" content="4k29 Memory" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@p_horeer" />
-  <meta name="twitter:creator" content="@p_horeer" />
-  <meta name="twitter:title" content="Memory — 写真と記録 | {{ site.title | escape }}" />
-  <meta name="twitter:description" content="{{ page.description | escape }}" />
-  <meta name="twitter:image" content="{{ '/images/ogp/4k29.png' | absolute_url }}" />
+  {% include seo.html %}
 
   {% assign sorted_memories = site.memories | sort: "date" | reverse %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Memory — 写真と記録 | 4k29",
-    "description": {{ page.description | jsonify }},
+    "name": {{ seo_document_title | jsonify }},
+    "description": {{ seo_description | jsonify }},
     "url": {{ page.url | absolute_url | jsonify }},
     "inLanguage": "ja",
     "isPartOf": {

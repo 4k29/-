@@ -1,4 +1,7 @@
 ---
+sitemap: true
+seo_title: "サイトマップ"
+seo_description: "4k29の公開ページ一覧。ガジェットやデザインの考察記事、国内外の旅の写真を、NotesとMemoryから探せます。"
 layout: null
 title: Sitemap
 description: 4k29の公開ページ一覧。
@@ -19,11 +22,8 @@ permalink: /sitemap/
     gtag("config", "G-KK7MDCLBGT");
   </script>
 
-  <title>サイトマップ | {{ site.title | escape }}</title>
-  <meta name="description" content="{{ page.description | escape }}" />
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
-  <link rel="canonical" href="{{ page.url | absolute_url }}" />
-  <link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}" />
+  {% include seo.html %}
+
   <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}?v=20260910" />
   <link rel="apple-touch-icon" href="{{ '/favicon.png' | relative_url }}?v=20260910" />
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}" />
