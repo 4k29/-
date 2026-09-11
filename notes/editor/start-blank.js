@@ -52,7 +52,7 @@
 
     if (descriptionCount) descriptionCount.textContent = "0";
     if (bodyCount) bodyCount.textContent = "0";
-    if (urlPreview) urlPreview.textContent = "https://4k29.github.io/4k29/notes/….html";
+    if (urlPreview) urlPreview.textContent = "https://4k29.github.io/4k29/notes/…/";
     if (previewTitle) previewTitle.textContent = "記事のタイトル";
     if (previewDate) previewDate.textContent = "";
     if (previewDateInline) previewDateInline.textContent = "";

@@ -25,7 +25,7 @@ collections:
     sort_by: date
   notes:
     output: true
-    permalink: /notes/:name.html
+    permalink: /notes/:name/
     sort_by: date
     future: true
 

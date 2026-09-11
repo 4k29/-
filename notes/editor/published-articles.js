@@ -91,7 +91,7 @@
     }
 
     var permalink = typeof data.permalink === "string" ? data.permalink : "";
-    var slugMatch = permalink.match(/\/notes\/([^/]+)\.html$/);
+    var slugMatch = permalink.match(/\/notes\/([^/]+?)(?:\.html|\/)?$/);
     var filename = String(path || "").split("/").pop() || "";
     var filenameSlug = filename.replace(/\.md$/i, "");
     var publishedDate = typeof data.date === "string" ? data.date.match(/^\d{4}-\d{2}-\d{2}/) : null;

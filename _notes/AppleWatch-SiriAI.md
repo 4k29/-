@@ -3,7 +3,7 @@ title: "Apple WatchはSiri AIの中核になり得ると思った話"
 description: "Apple Watchは、日々の活動や身体の状態など、パーソナルコンテキストが集まるデバイスだ。Series 12とUltra 4で発表されたAudio Intelligenceを手掛かりに、その人の状況を踏まえて支援するSiri AIの中核になり得る可能性を考える。"
 date: "2026-09-10 00:00:00 +0900"
 last_modified_at: "2026-09-10 00:00:00 +0900"
-permalink: "/notes/AppleWatch-SiriAI.html"
+permalink: "/notes/AppleWatch-SiriAI/"
 image: "/images/ogp/AppleWatch-SiriAI.png"
 image_alt: "Apple Watchは、Siri AIの中核になり得る"
 tags: ["Apple Watch","Siri AI"]

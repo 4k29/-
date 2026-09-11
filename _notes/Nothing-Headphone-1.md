@@ -3,7 +3,7 @@ title: "Nothing Headphone (1) 4ヶ月使用レビュー"
 description: "Nothing Headphone (1)を4ヶ月間ほぼ毎日使って分かった、音、操作、ノイズキャンセリング、バッテリー、装着感、傷についてのレビュー。"
 date: "2026-07-22 00:00:00 +0900"
 last_modified_at: "2026-09-10 00:00:00 +0900"
-permalink: "/notes/Nothing-Headphone-1.html"
+permalink: "/notes/Nothing-Headphone-1/"
 image: "/images/ogp/NothingHeadphone(1).png"
 image_alt: "Nothing Headphone (1)"
 tags: ["Nothing","Headphone (1)","ヘッドホン","レビュー"]

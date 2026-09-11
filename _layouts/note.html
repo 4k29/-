@@ -108,7 +108,9 @@
         </header>
 
         <div class="article-body">
-          {{ content }}
+          {% capture image_prefix %}="{{ '/images/' | relative_url }}{% endcapture %}
+          {% capture single_image_prefix %}='{{ '/images/' | relative_url }}{% endcapture %}
+          {{ content | replace: '="../images/', image_prefix | replace: "='../images/", single_image_prefix }}
         </div>
       </article>
 

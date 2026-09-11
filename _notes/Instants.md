@@ -3,7 +3,7 @@ title: "Instantsに思うこと"
 description: "Instagramの新機能「Instants」は、これまでの“映えるSNS”とは逆方向の思想を持っているように見える。Metaが目指す次のSNS像について考える。"
 date: "2026-05-21 00:00:00 +0900"
 last_modified_at: "2026-09-10 00:00:00 +0900"
-permalink: "/notes/Instants.html"
+permalink: "/notes/Instants/"
 image: "/images/ogp/Instants.png"
 image_alt: "Instantsに思うこと"
 tags: ["Instagram","Meta","Instants","SNS","UX"]

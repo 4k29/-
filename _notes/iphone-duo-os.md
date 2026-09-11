@@ -3,7 +3,7 @@ title: "iPhone DuoのOSは、「iOS」と呼ぶべきなのか"
 description: "iPhone Duoは、iOSの手軽さとiPadOSの作業のしやすさに、折りたたみならではの機能を組み合わせている。iPadOSに独自の名前が与えられた経緯を踏まえ、この新しい体験を「iOS」と呼び続けることについて考える。"
 date: "2026-09-10 00:00:00 +0900"
 last_modified_at: "2026-09-10 00:00:00 +0900"
-permalink: "/notes/iphone-duo-os.html"
+permalink: "/notes/iphone-duo-os/"
 image: "/images/ogp/iphone-duo-os.png"
 image_alt: "iPhone DuoのOSは、「iOS」と呼ぶべきなのか"
 tags: ["iPhone","Duo","iOS"]

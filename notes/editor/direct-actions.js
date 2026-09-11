@@ -91,7 +91,7 @@
       "description: " + yamlValue(data.description),
       "date: " + yamlValue(published),
       "last_modified_at: " + yamlValue(modified),
-      "permalink: " + yamlValue("/notes/" + data.slug + ".html"),
+      "permalink: " + yamlValue("/notes/" + data.slug + "/"),
       "image: " + yamlValue(data.image),
       "image_alt: " + yamlValue(data.imageAlt),
       "tags: " + JSON.stringify(data.tags),

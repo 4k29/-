@@ -3,7 +3,7 @@ title: "iPhone eシリーズの意義を考える"
 description: "「廉価版」だったSEと、「ファミリーの一員」であるeシリーズ。設計思想の転換から、Appleがeに込めた意図を読み解く。"
 date: "2026-03-15 00:00:00 +0900"
 last_modified_at: "2026-09-10 00:00:00 +0900"
-permalink: "/notes/iPhone-e.html"
+permalink: "/notes/iPhone-e/"
 image: "/images/ogp/iPhone-e.png"
 image_alt: "iPhone eシリーズの意義を考える"
 tags: ["Apple","iPhone","iPhone e","iPhone SE"]

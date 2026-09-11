@@ -138,7 +138,7 @@
       "description: " + yamlValue(data.description),
       "date: " + yamlValue(published),
       "last_modified_at: " + yamlValue(modified),
-      "permalink: " + yamlValue("/notes/" + data.slug + ".html"),
+      "permalink: " + yamlValue("/notes/" + data.slug + "/"),
       "image: " + yamlValue(data.image),
       "image_alt: " + yamlValue(data.imageAlt),
       "tags: " + JSON.stringify(data.tags),
@@ -480,7 +480,7 @@
     }
     descriptionCount.textContent = fields.description.value.length;
     bodyCount.textContent = fields.body.value.length;
-    urlPreview.textContent = BASE_URL + "/notes/" + (data.slug || "…") + ".html";
+    urlPreview.textContent = BASE_URL + "/notes/" + (data.slug || "…") + "/";
   }
 
   function updateAll() {
@@ -588,7 +588,7 @@
       if (key === "image_alt") data.imageAlt = String(value);
       if (key === "tags") data.tags = Array.isArray(value) ? value : String(value).split(",");
       if (key === "permalink") {
-        var match = String(value).match(/\/notes\/([^/]+)\.html$/);
+        var match = String(value).match(/\/notes\/([^/]+?)(?:\.html|\/)?$/);
         if (match) data.slug = match[1];
       }
     });
