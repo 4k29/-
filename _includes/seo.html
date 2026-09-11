@@ -1,5 +1,9 @@
 {%- assign seo_title = page.seo_title | default: page.title | default: site.title -%}
-{%- capture seo_document_title -%}{{ seo_title }}{% unless seo_title == site.title %} | {{ site.title }}{% endunless %}{%- endcapture -%}
+{%- if page.seo_title_exact -%}
+  {%- assign seo_document_title = seo_title -%}
+{%- else -%}
+  {%- capture seo_document_title -%}{{ seo_title }}{% unless seo_title == site.title %} | {{ site.title }}{% endunless %}{%- endcapture -%}
+{%- endif -%}
 {%- assign seo_description = page.seo_description | default: page.description -%}
 {%- if seo_description == nil or seo_description == empty -%}
   {%- assign seo_description = page.excerpt | default: content | markdownify | strip_html | normalize_whitespace | truncate: 160 -%}
